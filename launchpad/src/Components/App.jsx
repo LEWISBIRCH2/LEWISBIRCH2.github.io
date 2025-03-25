@@ -9,6 +9,12 @@ function App() {
   return (
     <>
       <Header />
+
+      <a href="http://localhost:3000/"> Home </a>
+      <a href="http://localhost:3000/about"> About </a>
+      <a href="http://localhost:3000/gallery"> Gallery </a>
+      <a href="http://localhost:3000/myexhibit"> My Exhibit </a>
+
       <Routes>
         <Route path="/" />
         <Route path="/about" element={<About />} />
