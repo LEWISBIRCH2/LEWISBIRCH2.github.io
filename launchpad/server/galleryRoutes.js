@@ -28,7 +28,7 @@ galleryRoutes.route("/Gallery/:id").get(async (request, response) => {
   }
 });
 
-// Update
+// Create
 galleryRoutes.route("/Gallery").post(async (request, response) => {
   let db = database.getDb();
   let mongoObject = {
@@ -40,7 +40,7 @@ galleryRoutes.route("/Gallery").post(async (request, response) => {
   response.json(data);
 });
 
-// Create
+// Update
 galleryRoutes.route("/Gallery/:id").put(async (request, response) => {
   let db = database.getDb();
   let mongoObject = {
