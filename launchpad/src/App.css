@@ -15,3 +15,19 @@
   border-width: 2px;
   border-radius: 4px;
 }
+
+.artwork {
+  display: flex;
+  flex-direction: column;
+}
+
+.art {
+  margin: 4px;
+  padding: 4px;
+  border-radius: 10px;
+}
+
+.art:hover {
+  cursor: pointer;
+  background-color: #aaa;
+}

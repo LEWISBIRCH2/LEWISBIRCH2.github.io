@@ -49,7 +49,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route element={<Layout />}>
           <Route path="/home" element={<HomePage />} />
-          <Route path="/artwork/:id" element={<SeeArtwork />} />
+          <Route path="/gallery/:id" element={<SeeArtwork />} />
           <Route path="/personalexhibit" element={<PersonalExhibit />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/about" element={<AboutPage />} />

@@ -12,7 +12,7 @@ export async function getGalleries() {
 }
 
 export async function getGallery(id) {
-  const response = await axios.get(`${URL}/gallery/:${id}`);
+  const response = await axios.get(`${URL}/gallery/${id}`);
   if (response.status === 200) {
     return response.data;
   } else {
