@@ -12,10 +12,6 @@ export const pageData = [
     path: "/profile",
   },
   {
-    name: "Contact",
-    path: "/contact",
-  },
-  {
     name: "Personal Exhibit",
     path: "/personalexhibit",
   },
