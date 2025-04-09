@@ -1,3 +1,4 @@
+import userEvent from "@testing-library/user-event";
 import axios from "axios";
 
 const URL = "http://localhost:3000";
@@ -54,4 +55,13 @@ export async function createUser(user) {
 export async function updateUser(id, user) {
   const response = await axios.put(`${URL}/users/${id}`, user);
   return response;
+}
+
+export async function verifyUser(user) {
+  const response = await axios.post(`${URL}/users/login`, user);
+
+  console.log(response);
+  if (response.data.success) {
+    return response.data.token;
+  }
 }
