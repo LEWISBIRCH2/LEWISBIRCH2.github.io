@@ -34,3 +34,24 @@ export async function deleteGallery(id) {
   const response = await axios.delete(`${URL}/gallery/${id}`);
   return response;
 }
+
+//     -----      Users     ------
+
+export async function getUser(user) {
+  const response = await axios.get(`${URL}/users/${user}`);
+  if (response.status === 200) {
+    return response.data;
+  } else {
+    return;
+  }
+}
+
+export async function createUser(user) {
+  const response = await axios.post(`${URL}/users`, user);
+  return response;
+}
+
+export async function updateUser(id, user) {
+  const response = await axios.put(`${URL}/users/${id}`, user);
+  return response;
+}
