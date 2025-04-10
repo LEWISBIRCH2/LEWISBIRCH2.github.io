@@ -1,6 +1,7 @@
 import { verifyUser } from "../api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export function Login() {
   const [user, setUser] = useState({
@@ -18,8 +19,9 @@ export function Login() {
     e.preventDefault();
     let response = await verifyUser(user);
     if (response) {
-      navigate("/home");
       sessionStorage.setItem("User", response);
+      axios.defaults.headers.common["Authorization"] = `Bearer ${response}`;
+      navigate("/home");
     } else {
       alert("Incorrect details submitted");
     }

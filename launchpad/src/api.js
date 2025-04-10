@@ -1,4 +1,3 @@
-import userEvent from "@testing-library/user-event";
 import axios from "axios";
 
 const URL = "http://localhost:3000";

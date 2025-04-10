@@ -8,7 +8,7 @@ import { HomePage } from "./Pages/HomePage";
 import "./App.css";
 import { Navbar } from "./Components/Navbar";
 import { Layout } from "./Components/Layout";
-
+import axios from "axios";
 import { useState, useEffect } from "react";
 import {
   getGalleries,
@@ -42,6 +42,14 @@ function App() {
 
   // <>{JSON.stringify(gallery)}</>;
   //  <button onclick={createGalleryPost()}>Create Entry</button>
+
+  useEffect(() => {
+    let token = sessionStorage.getItem("User");
+    if (token) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    }
+  }, []);
+
   return (
     <Router>
       <Routes>
