@@ -19,36 +19,66 @@ import {
 } from "./api";
 
 function App() {
-  const [gallery, setGallery] = useState();
+  // const [gallery, setGallery] = useState();
 
-  useEffect(() => {
-    async function allGallery() {
-      let data = await getGalleries();
-      if (data) {
-        setGallery(data);
-      }
-    }
-    allGallery();
-  }, []);
+  // useEffect(() => {
+  //   async function allGallery() {
+  //     let data = await getGalleries();
+  //     if (data) {
+  //       setGallery(data);
+  //     }
+  //   }
+  //   allGallery();
+  // }, []);
 
-  function createGalleryPost() {
-    let galleryObject = {
-      museum: "testPost WITH API",
-      title: "postedTitle",
-      description: "A hardcoded post",
-    };
-    createGallery(galleryObject);
-  }
+  // function createGalleryPost() {
+  //   let galleryObject = {
+  //     museum: "testPost WITH API",
+  //     title: "postedTitle",
+  //     description: "A hardcoded post",
+  //   };
+  //   createGallery(galleryObject);
+  // }
 
   // <>{JSON.stringify(gallery)}</>;
   //  <button onclick={createGalleryPost()}>Create Entry</button>
 
+  // useEffect(() => {
+  //   const stored = sessionStorage.getItem("User");
+  //   if (stored) {
+  //     try {
+  //       const parsed = JSON.parse(stored);
+  //       const token = typeof parsed === "string" ? parsed : parsed.token;
+  //       if (token) {
+  //         axios.defaults.headers.common["authorization"] = `Bearer ${token}`;
+  //       }
+  //     } catch (err) {
+  //       console.error("Invalid token format in sessionStorage", err);
+  //     }
+  //   }
+  // }, []);
+
   useEffect(() => {
-    let token = sessionStorage.getItem("User");
-    if (token) {
-      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    const stored = localStorage.getItem("User");
+    console.log("APP.JSX — LocalStorage Token:", stored);
+
+    if (stored) {
+      try {
+        const token = stored;
+        axios.defaults.headers.common["authorization"] = `Bearer ${token}`;
+      } catch (err) {
+        console.error("Failed to parse stored token:");
+      }
     }
   }, []);
+
+  // useEffect(() => {
+  //   let token = sessionStorage.getItem("User");
+  //   console.log("APP.JSX L48", "TOKEN", token);
+  //   if (token) {
+  //     axios.defaults.headers.common["authorization"] = `Bearer ${token}`;
+  //   }
+  // }, []);
 
   return (
     <Router>

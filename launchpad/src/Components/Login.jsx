@@ -19,7 +19,8 @@ export function Login() {
     e.preventDefault();
     let response = await verifyUser(user);
     if (response) {
-      sessionStorage.setItem("User", response);
+      //sessionStorage.setItem("User", response);
+      localStorage.setItem("User", response);
       axios.defaults.headers.common["Authorization"] = `Bearer ${response}`;
       navigate("/home");
     } else {

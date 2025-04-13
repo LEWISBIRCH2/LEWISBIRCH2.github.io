@@ -74,9 +74,12 @@ galleryRoutes
   });
 
 // Security check. Verifying saved token matches with that on the backend (to avoid malicious alterations)
-function verifyToken(request, response, next) {
+async function verifyToken(request, response, next) {
   const authHeaders = request.headers["authorization"];
   const token = authHeaders && authHeaders.split(" ")[1];
+  console.log("GALLERYROUTES L80", "AUTH-HEADERS", authHeaders);
+  console.log("GALLERYROUTES L81", "TOKEN?", token);
+
   if (!token) {
     return response.status(401).json({ message: "Auth token missing" });
   }
