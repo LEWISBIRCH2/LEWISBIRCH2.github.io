@@ -1,7 +1,17 @@
 import { Navbar } from "./Navbar";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export function Layout() {
+  let user = localStorage.getItem("User");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/");
+    }
+  }, [user]);
+
   return (
     <>
       <Navbar />
