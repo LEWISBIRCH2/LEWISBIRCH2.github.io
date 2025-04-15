@@ -19,39 +19,35 @@ const s3Client = new S3Client({
 
 // Retrieve One
 awsRoutes.route("/images/:id").get(verifyToken, async (request, response) => {
-  let db = database.getDb();
-  let data = await db
-    .collection("Gallery")
-    .findOne({ _id: new ObjectId(request.params.id) });
-  if (Object.keys(data).length > 0) {
-    response.json(data);
-  } else {
-    throw new Error("Data not found");
-  }
+  const id = request.params.id;
+  const bucketParams = {
+    Bucket: s3Bucket,
+    Key: id,
+  };
+
+  const data = await s3Client.send(new GetObjectCommand(bucketParams));
+
+  const contentType = data.contentType;
+  const srcString = await data.body.transformToString("base64");
+  const imageSource = `data:${contentType};base64,${srcString}`;
+
+  response.json(imageSource);
 });
 
 // Create
 awsRoutes.route("/images").post(verifyToken, async (request, response) => {
-  let db = database.getDb();
-  let mongoObject = {
-    museum: request.body.museum,
-    title: request.body.title,
-    description: request.body.description,
+  const file = request.body;
+  const bucketParams = {
+    Bucket: s3Bucket,
+    Key: file.name,
+    Body: file,
   };
-  let data = await db.collection("Gallery").insertOne(mongoObject);
+
+  const data = await s3Client.send(new PutObjectCommand(bucketParams));
+
   response.json(data);
 });
 
-// Delete
-awsRoutes
-  .route("/images/:id")
-  .delete(verifyToken, async (request, response) => {
-    let db = database.getDb();
-    let data = await db
-      .collection("Gallery")
-      .deleteOne({ _id: new ObjectId(request.params.id) });
-    response.json(data);
-  });
 
 // Security check. Verifying saved token matches with that on the backend (to avoid malicious alterations)
 function verifyToken(request, response, next) {

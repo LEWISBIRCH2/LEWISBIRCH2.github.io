@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const gallery = require("./galleryRoutes");
 const users = require("./userRoutes");
+const awsRoutes = require("./awsRoutes");
 
 const application = express();
 const PORT = 3000;
@@ -18,6 +19,7 @@ application.use(
 application.use(express.json());
 application.use(gallery);
 application.use(users);
+application.use(awsRoutes);
 
 application.listen(PORT, () => {
   connect.connectToServer();
