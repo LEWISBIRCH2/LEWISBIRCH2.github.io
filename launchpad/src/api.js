@@ -63,3 +63,18 @@ export async function verifyUser(user) {
     return response.data.token;
   }
 }
+
+export async function createImage(file) {
+  const formData = new FormData();
+  formData.append("image", file);
+  const response = await axios.post(`${URL}/images`, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+}
+
+export async function getImage(id) {
+  const response = await axios.get(`${URL}/images/${id}`);
+  return response;
+}

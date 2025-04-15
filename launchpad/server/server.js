@@ -4,6 +4,8 @@ const cors = require("cors");
 const gallery = require("./galleryRoutes");
 const users = require("./userRoutes");
 const awsRoutes = require("./awsRoutes");
+const multer = require("multer");
+const upload = multer();
 
 const application = express();
 const PORT = 3000;
@@ -17,6 +19,7 @@ application.use(
   })
 );
 application.use(express.json());
+application.use(upload.any());
 application.use(gallery);
 application.use(users);
 application.use(awsRoutes);

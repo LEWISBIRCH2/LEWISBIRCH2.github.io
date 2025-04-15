@@ -36,7 +36,7 @@ awsRoutes.route("/images/:id").get(verifyToken, async (request, response) => {
 
 // Create
 awsRoutes.route("/images").post(verifyToken, async (request, response) => {
-  const file = request.body;
+  const file = request.files[0];
   const bucketParams = {
     Bucket: s3Bucket,
     Key: file.name,
@@ -47,7 +47,6 @@ awsRoutes.route("/images").post(verifyToken, async (request, response) => {
 
   response.json(data);
 });
-
 
 // Security check. Verifying saved token matches with that on the backend (to avoid malicious alterations)
 function verifyToken(request, response, next) {

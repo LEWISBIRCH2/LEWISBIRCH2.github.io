@@ -39,6 +39,7 @@ galleryRoutes.route("/Gallery").post(verifyToken, async (request, response) => {
     museum: request.body.museum,
     title: request.body.title,
     description: request.body.description,
+    imageId: request.body.imageId,
   };
   let data = await db.collection("Gallery").insertOne(mongoObject);
   response.json(data);
@@ -54,6 +55,7 @@ galleryRoutes
         museum: request.body.museum,
         title: request.body.title,
         description: request.body.description,
+        imageId: request.body.imageId,
       },
     };
     let data = await db
