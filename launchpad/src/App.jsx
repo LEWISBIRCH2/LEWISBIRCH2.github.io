@@ -43,21 +43,6 @@ function App() {
   // <>{JSON.stringify(gallery)}</>;
   //  <button onclick={createGalleryPost()}>Create Entry</button>
 
-  // useEffect(() => {
-  //   const stored = sessionStorage.getItem("User");
-  //   if (stored) {
-  //     try {
-  //       const parsed = JSON.parse(stored);
-  //       const token = typeof parsed === "string" ? parsed : parsed.token;
-  //       if (token) {
-  //         axios.defaults.headers.common["authorization"] = `Bearer ${token}`;
-  //       }
-  //     } catch (err) {
-  //       console.error("Invalid token format in sessionStorage", err);
-  //     }
-  //   }
-  // }, []);
-
   useEffect(() => {
     const stored = localStorage.getItem("User");
     console.log("APP.JSX — LocalStorage Token:", stored);
@@ -65,9 +50,10 @@ function App() {
     if (stored) {
       try {
         const token = stored;
-        axios.defaults.headers.common["authorization"] = `Bearer ${token}`;
+        axios.defaults.headers["authorization"] = `Bearer ${token}`;
+        console.log(axios.defaults.headers.authorization);
       } catch (err) {
-        console.error("Failed to parse stored token:");
+        console.error("Stored token not resolved");
       }
     }
   }, []);

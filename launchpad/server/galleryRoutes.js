@@ -78,10 +78,13 @@ async function verifyToken(request, response, next) {
   const authHeaders = request.headers["authorization"];
   const token = authHeaders && authHeaders.split(" ")[1];
   console.log("GALLERYROUTES L80", "AUTH-HEADERS", authHeaders);
+  console.log(request.headers);
   console.log("GALLERYROUTES L81", "TOKEN?", token);
 
   if (!token) {
-    return response.status(401).json({ message: "Auth token missing" });
+    return response
+      .status(401)
+      .json({ message: "Auth token missing (VerifyToken)" });
   }
   jwt.verify(token, process.env.SECRETKEY, (error, user) => {
     if (error) {
