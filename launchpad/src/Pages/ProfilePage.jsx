@@ -14,10 +14,10 @@ export function ProfilePage() {
       const allArt = await getGalleries();
 
       // Favourited artwork? Saved by filer? Add art to personal exhib on backend. Filter from all art into just personal exhib.
-      const filteredArt = allArt.filter((art) => {
-        art.liked == decodedUser._id;
-      });
-      setArt(filteredArt);
+      // const filteredArt = allArt.filter((art) => {
+      //   art.liked == decodedUser._id;
+      // });
+      // setArt(filteredArt);
       setUser(decodedUser);
     }
     loadUserData();
@@ -30,7 +30,7 @@ export function ProfilePage() {
       <label>Email:</label>
       <h2>{user.email}</h2>
       <label>Join Date:</label>
-      <h2>{user.joinDate}</h2>
+      <h2>{Date(user.joinDate).slice(0,16)}</h2>
       {art.map((art) => {
         return <ArtCard art={art} />;
       })}
