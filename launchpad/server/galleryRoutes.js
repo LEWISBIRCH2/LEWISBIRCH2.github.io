@@ -76,11 +76,9 @@ galleryRoutes
 
 // Security check. Verifying saved token matches with that on the backend (to avoid malicious alterations)
 async function verifyToken(request, response, next) {
+  //  console.log(request.headers)
   const authHeaders = request.headers["authorization"];
   const token = authHeaders && authHeaders.split(" ")[1];
-  console.log("GALLERYROUTES L80", "AUTH-HEADERS", authHeaders);
-  console.log(request.headers);
-  console.log("GALLERYROUTES L81", "TOKEN?", token);
 
   if (!token) {
     return response

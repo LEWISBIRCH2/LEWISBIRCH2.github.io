@@ -51,20 +51,11 @@ function App() {
       try {
         const token = stored;
         axios.defaults.headers["authorization"] = `Bearer ${token}`;
-        console.log(axios.defaults.headers.authorization);
       } catch (err) {
         console.error("Stored token not resolved");
       }
     }
   }, []);
-
-  // useEffect(() => {
-  //   let token = sessionStorage.getItem("User");
-  //   console.log("APP.JSX L48", "TOKEN", token);
-  //   if (token) {
-  //     axios.defaults.headers.common["authorization"] = `Bearer ${token}`;
-  //   }
-  // }, []);
 
   return (
     <Router>
