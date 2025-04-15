@@ -21,7 +21,7 @@ export function Login() {
     if (response) {
       //sessionStorage.setItem("User", response);
       localStorage.setItem("User", response);
-      axios.defaults.headers.common["Authorization"] = `Bearer ${response}`;
+      axios.defaults.headers.common["authorization"] = `Bearer ${response}`;
       navigate("/home");
     } else {
       alert("Incorrect details submitted");

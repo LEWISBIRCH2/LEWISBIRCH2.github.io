@@ -7,7 +7,8 @@ require("dotenv").config({ path: "./config.env" });
 let galleryRoutes = express.Router();
 
 // Retrieve All
-galleryRoutes.route("/Gallery").get(verifyToken, async (request, response) => {
+// REMOVED VERIFY TOKEN FUNCTION CALL
+galleryRoutes.route("/Gallery").get(async (request, response) => {
   let db = database.getDb();
   let data = await db.collection("Gallery").find({}).toArray();
   if (Object.keys(data).length > 0) {
