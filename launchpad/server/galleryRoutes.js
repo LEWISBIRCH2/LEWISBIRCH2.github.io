@@ -3,7 +3,6 @@ const database = require("./connect");
 const ObjectId = require("mongodb").ObjectId;
 const jwt = require("jsonwebtoken");
 require("dotenv").config({ path: "./config.env" });
-
 let galleryRoutes = express.Router();
 
 // Retrieve All
@@ -75,8 +74,9 @@ galleryRoutes
   });
 
 // Security check. Verifying saved token matches with that on the backend (to avoid malicious alterations)
-async function verifyToken(request, response, next) {
-  //  console.log(request.headers)
+function verifyToken(request, response, next) {
+  console.log("LOWER>>>", request.headers["authorization"]);
+
   const authHeaders = request.headers["authorization"];
   const token = authHeaders && authHeaders.split(" ")[1];
 

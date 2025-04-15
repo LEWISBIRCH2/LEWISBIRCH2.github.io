@@ -44,16 +44,11 @@ function App() {
   //  <button onclick={createGalleryPost()}>Create Entry</button>
 
   useEffect(() => {
-    const stored = localStorage.getItem("User");
-    console.log("APP.JSX — LocalStorage Token:", stored);
-
+    let stored = localStorage.getItem("User");
     if (stored) {
-      try {
-        const token = stored;
-        axios.defaults.headers["authorization"] = `Bearer ${token}`;
-      } catch (err) {
-        console.error("Stored token not resolved");
-      }
+      console.log("APP.JSX — LocalStorage Token:", stored);
+      axios.defaults.headers.common["authorization"] = `Bearer ${stored}`;
+      console.log(axios.defaults.headers.common);
     }
   }, []);
 
