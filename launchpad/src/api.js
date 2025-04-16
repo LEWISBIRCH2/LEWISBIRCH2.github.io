@@ -3,7 +3,9 @@ import axios from "axios";
 const URL = "http://localhost:3000";
 
 export async function getGalleries() {
-  const response = await axios.get(`${URL}/gallery`);
+  const response = await axios.get(
+    "https://api.artic.edu/api/v1/artworks?fields=id,title,artist_display,date_display,image_id"
+  );
   if (response.status === 200) {
     return response.data;
   } else {
@@ -12,7 +14,8 @@ export async function getGalleries() {
 }
 
 export async function getGallery(id) {
-  const response = await axios.get(`${URL}/gallery/${id}`);
+  const response = await axios.get(`https://api.artic.edu/api/v1/artworks
+/${id}`);
 
   const post = response.data;
   // const data = await getImage(post.imageId);

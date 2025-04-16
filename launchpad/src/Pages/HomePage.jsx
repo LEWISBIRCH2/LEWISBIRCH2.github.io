@@ -8,7 +8,7 @@ export function HomePage() {
   useEffect(() => {
     async function loadAllArtwork() {
       const data = await getGalleries();
-      setArtwork(data);
+      setArtwork(data.data);
     }
 
     loadAllArtwork();

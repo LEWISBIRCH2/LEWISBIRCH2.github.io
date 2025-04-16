@@ -1,12 +1,19 @@
 import { Link } from "react-router-dom";
+import { getGallery } from "../api";
 
 export function ArtCard({ art }) {
-  return (
-    <Link to={`/gallery/${art._id}`}>
+
+   return (
+    <Link to={`/gallery/${art.id}`}>
       <div className="art">
-        <h1>{art.museum}</h1>
-        <h2>{art.title}</h2>
-        <p>{art.description}</p>
+        <h1>{art.title}</h1>
+        <h2>{art.date_display}</h2>
+
+        <img
+          src={`https://www.artic.edu/iiif/2/${art.image_id}/full/843,/0/default.jpg`}
+          alt={art.title}
+          width="300"
+        />
       </div>
     </Link>
   );
