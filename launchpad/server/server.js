@@ -22,7 +22,7 @@ application.use(express.json());
 application.use(upload.any());
 application.use(gallery);
 application.use(users);
-application.use(awsRoutes);
+//application.use(awsRoutes);
 
 application.listen(PORT, () => {
   connect.connectToServer();

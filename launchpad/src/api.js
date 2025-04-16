@@ -13,14 +13,18 @@ export async function getGalleries() {
 
 export async function getGallery(id) {
   const response = await axios.get(`${URL}/gallery/${id}`);
-  if (response.status === 200) {
-    return response.data;
-  } else {
-    return;
-  }
+
+  const post = response.data;
+  // const data = await getImage(post.imageId);
+  // post.image = data;
+  return post;
 }
 
 export async function createGallery(post) {
+  // const data = await createImage(post.file);
+  // const imageId = data.data.VersionId;
+  // post.imageId = imageId;
+
   const response = await axios.post(`${URL}/gallery`, post);
   return response;
 }
@@ -64,17 +68,17 @@ export async function verifyUser(user) {
   }
 }
 
-export async function createImage(file) {
-  const formData = new FormData();
-  formData.append("image", file);
-  const response = await axios.post(`${URL}/images`, formData, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  });
-}
+// export async function createImage(file) {
+//   const formData = new FormData();
+//   formData.append("image", file);
+//   const response = await axios.post(`${URL}/images`, formData, {
+//     headers: {
+//       "Content-Type": "multipart/form-data",
+//     },
+//   });
+// }
 
-export async function getImage(id) {
-  const response = await axios.get(`${URL}/images/${id}`);
-  return response;
-}
+// export async function getImage(id) {
+//   const response = await axios.get(`${URL}/images/${id}`);
+//   return response;
+// }
