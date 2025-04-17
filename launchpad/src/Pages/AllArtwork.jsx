@@ -6,26 +6,43 @@ import axios from "axios";
 import { getGalleriesPage } from "../api";
 
 export function AllArtwork() {
+  const [rawArt, setRawArt] = useState([]);
   const [art, setArt] = useState([]);
   const [museum, setMuseum] = useState(null);
   const [page, setPage] = useState(1);
+  const [sortOrder, setSortOrder] = useState(null);
   // const [info, setInfo] = useState({});
 
   useEffect(() => {
     async function fetchArt() {
       if (museum === "chicago") {
         const data = await getGalleriesPage(page);
-        setArt(data.data);
+
+        setRawArt(data.data);
       }
     }
     fetchArt();
   }, [museum, page]);
+
+  useEffect(() => {
+    let sorted = [...rawArt];
+    if (sortOrder === "asc") {
+      sorted = [...sorted].sort((a, b) => a.title.localeCompare(b.title));
+    } else if (sortOrder === "desc") {
+      sorted = [...sorted].sort((a, b) => b.title.localeCompare(a.title));
+    }
+    setArt(sorted);
+  }, [rawArt, sortOrder]);
 
   function handlePrevious() {
     if (page > 1) setPage((prev) => prev - 1);
   }
   function handleNext() {
     setPage((prev) => prev + 1);
+  }
+
+  function handleSortChange(e) {
+    setSortOrder(e.target.value);
   }
   //   async function handleChicago() {
   //     // CURRENTLY, get galleries ONLY gets Chicago. DO NOT FORGET THIS.
@@ -57,12 +74,21 @@ export function AllArtwork() {
         </div>
       )}
 
+      {art.length > 0 && (
+        <div style={{ margin: "20px 0" }}>
+          <label>Sort by Title: </label>
+          <select onChange={handleSortChange} value={sortOrder || ""}>
+            <option value="">None</option>
+            <option value="asc">A → Z</option>
+            <option value="desc">Z → A</option>
+          </select>
+        </div>
+      )}
+
       <div className="chicago-artwork">
         {art.map((art) => (
           <ChicagoArtCard key={art._id} art={art} />
         ))}
-
-
       </div>
     </>
   );
