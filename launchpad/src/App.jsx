@@ -10,45 +10,13 @@ import { Navbar } from "./Components/Navbar";
 import { Layout } from "./Components/Layout";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import {
-  getGalleries,
-  getGallery,
-  updateGallery,
-  deleteGallery,
-  createGallery,
-} from "./api";
 
 function App() {
-  // const [gallery, setGallery] = useState();
-
-  // useEffect(() => {
-  //   async function allGallery() {
-  //     let data = await getGalleries();
-  //     if (data) {
-  //       setGallery(data);
-  //     }
-  //   }
-  //   allGallery();
-  // }, []);
-
-  // function createGalleryPost() {
-  //   let galleryObject = {
-  //     museum: "testPost WITH API",
-  //     title: "postedTitle",
-  //     description: "A hardcoded post",
-  //   };
-  //   createGallery(galleryObject);
-  // }
-
-  // <>{JSON.stringify(gallery)}</>;
-  //  <button onclick={createGalleryPost()}>Create Entry</button>
-
+  //Currenty obsolete. Used for added security measures.
   useEffect(() => {
     let stored = localStorage.getItem("User");
     if (stored) {
-      console.log("APP.JSX — LocalStorage Token:", stored);
       axios.defaults.headers.common["authorization"] = `Bearer ${stored}`;
-      console.log(axios.defaults.headers.common);
     }
   }, []);
 

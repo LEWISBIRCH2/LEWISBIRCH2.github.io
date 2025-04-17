@@ -1,46 +1,37 @@
-import { getGallery } from "../api";
-import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-
-
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { useParams } from "react-router-dom";
+import { getGallery } from "../api";
 
 export function SeeArtwork() {
   const [artworks, setArtworks] = useState([]);
+  const { id } = useParams();
 
   useEffect(() => {
-    const fetchArtworks = async () => {
-      try {
-        const response = await axios.get(
-          "https://api.artic.edu/api/v1/artworks?fields=id,title,artist_display,date_display,image_id"
-        );
-        setArtworks(response.data.data);
-      } catch (error) {
-        console.error("Error fetching artworks:", error.message);
-      }
-    };
-
+    async function fetchArtworks() {
+      const data = await getGallery(id);
+      setArtworks(data.data);
+    }
     fetchArtworks();
-  }, []);
+  }, [id]);
 
   return (
-    <div>
-      <h1>Artworks</h1>
-      {artworks.map((art) => (
-        <div key={art.id} style={{ marginBottom: "2rem" }}>
-          <h2>{art.title}</h2>
-          <p>{art.artist_display}</p>
-          <p>{art.date_display}</p>
-          {art.image_id && (
-            <img
-              src={`https://www.artic.edu/iiif/2/${art.image_id}/full/843,/0/default.jpg`}
-              alt={art.title}
-              width="300"
-            />
-          )}
-        </div>
-      ))}
+    <div key={artworks.id} style={{ marginBottom: "2rem" }}>
+      <h2>{artworks.title}</h2>
+      <p>{artworks.artist_display}</p>
+      <p>{artworks.date_display}</p>
+      <p>
+        {artworks.description
+          ? artworks.description
+          : "No Description Provided"}
+      </p>
+      <br></br>
+      {artworks.image_id && (
+        <img
+          src={`https://www.artic.edu/iiif/2/${artworks.image_id}/full/843,/0/default.jpg`}
+          alt={artworks.title}
+          width="300"
+        />
+      )}
     </div>
   );
 }

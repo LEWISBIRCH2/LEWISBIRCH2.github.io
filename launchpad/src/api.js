@@ -16,11 +16,8 @@ export async function getGalleries() {
 export async function getGallery(id) {
   const response = await axios.get(`https://api.artic.edu/api/v1/artworks
 /${id}`);
-
-  const post = response.data;
-  // const data = await getImage(post.imageId);
-  // post.image = data;
-  return post;
+const post = response.data;
+return post;
 }
 
 export async function createGallery(post) {

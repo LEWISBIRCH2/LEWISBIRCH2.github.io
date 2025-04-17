@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { getGallery } from "../api";
 
 export function ArtCard({ art }) {
 
