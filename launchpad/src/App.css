@@ -21,9 +21,12 @@
   border-radius: 4px;
 }
 
-.artwork {
-  display: flex;
-  flex-direction: column;
+.artworks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  margin-top: 80px;
 }
 
 .art {

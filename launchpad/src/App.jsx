@@ -6,7 +6,6 @@ import { AboutPage } from "./Pages/AboutPage";
 import { ProfilePage } from "./Pages/ProfilePage";
 import { HomePage } from "./Pages/HomePage";
 import "./App.css";
-import { Navbar } from "./Components/Navbar";
 import { Layout } from "./Components/Layout";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -19,6 +18,9 @@ function App() {
       axios.defaults.headers.common["authorization"] = `Bearer ${stored}`;
     }
   }, []);
+
+
+
 
   return (
     <Router>

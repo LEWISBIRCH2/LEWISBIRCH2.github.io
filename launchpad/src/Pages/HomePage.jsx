@@ -10,15 +10,18 @@ export function HomePage() {
       const data = await getGalleries();
       setArtwork(data.data);
     }
-
     loadAllArtwork();
   }, []);
 
   return (
-    <div className="artworks">
-      {artwork.map((art) => {
-        return <ArtCard art={art} />;
-      })}
-    </div>
+    <>
+      <h1>Highlights </h1>
+      <button>Browse All</button>
+      <div className="artworks">
+        {artwork.slice(0, 6).map((art) => {
+          return <ArtCard art={art} key={art.id} />;
+        })}
+      </div>
+    </>
   );
 }
