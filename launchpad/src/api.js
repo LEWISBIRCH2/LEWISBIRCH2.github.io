@@ -15,7 +15,7 @@ export async function getGalleries() {
 
 export async function getGalleriesPage(page = 1) {
   const response = await axios.get(
-    `https://api.artic.edu/api/v1/artworks?page=${page}&limit=16&fields=id,title,artist_display,date_display,image_id`
+    `https://api.artic.edu/api/v1/artworks?page=${page}&limit=80&fields=id,title,artist_display,date_display,image_id`
   );
   return response.data;
 }

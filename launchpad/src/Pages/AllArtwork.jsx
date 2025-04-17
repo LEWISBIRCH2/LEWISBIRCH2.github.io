@@ -61,6 +61,8 @@ export function AllArtwork() {
         {art.map((art) => (
           <ChicagoArtCard key={art._id} art={art} />
         ))}
+
+
       </div>
     </>
   );
