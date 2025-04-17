@@ -5,6 +5,7 @@ import { LandingPage } from "./Pages/LandingPage";
 import { AboutPage } from "./Pages/AboutPage";
 import { ProfilePage } from "./Pages/ProfilePage";
 import { HomePage } from "./Pages/HomePage";
+import { AllArtwork } from "./Pages/AllArtwork";
 import "./App.css";
 import { Layout } from "./Components/Layout";
 import axios from "axios";
@@ -19,9 +20,6 @@ function App() {
     }
   }, []);
 
-
-
-
   return (
     <Router>
       <Routes>
@@ -32,6 +30,7 @@ function App() {
           <Route path="/personalexhibit" element={<PersonalExhibit />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/allartwork" element={<AllArtwork />} />
         </Route>
       </Routes>
     </Router>

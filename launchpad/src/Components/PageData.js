@@ -15,4 +15,8 @@ export const pageData = [
     name: "Personal Exhibit",
     path: "/personalexhibit",
   },
+  {
+    name: "All Artwork",
+    path: "/allartwork",
+  },
 ];
