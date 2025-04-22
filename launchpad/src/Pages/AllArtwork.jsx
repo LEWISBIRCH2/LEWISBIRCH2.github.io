@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ChicagoArtCard } from "../Components/ChicagoArtCard";
-import { getGalleries } from "../api";
+import { MetArtCard } from "../Components/MetArtCard";
+import { getGalleries, getMetArtworks } from "../api";
 import axios from "axios";
 import { getGalleriesPage } from "../api";
 
@@ -17,8 +18,12 @@ export function AllArtwork() {
     async function fetchArt() {
       if (museum === "chicago") {
         const data = await getGalleriesPage(page);
-
         setRawArt(data.data);
+      }
+
+      if (museum === "met") {
+        const metData = await getMetArtworks(page);
+        setRawArt(metData);
       }
     }
     fetchArt();
@@ -59,9 +64,17 @@ export function AllArtwork() {
           setPage(1);
         }}
       >
-        Art Institute of Chicago{" "}
+        The Art Institute of Chicago{" "}
       </button>
-      <button> Museum #2</button>
+      <button
+        onClick={() => {
+          setMuseum("met");
+          setPage(1);
+        }}
+      >
+        {" "}
+        The Metropolitan Museum of Art{" "}
+      </button>
       <button> Museum #3</button>
 
       {museum && (
@@ -86,9 +99,13 @@ export function AllArtwork() {
       )}
 
       <div className="chicago-artwork">
-        {art.map((art) => (
-          <ChicagoArtCard key={art._id} art={art} />
-        ))}
+        {art.map((artwork) =>
+          museum === "met" ? (
+            <MetArtCard key={artwork.objectID} art={artwork} />
+          ) : (
+            <ChicagoArtCard key={artwork._id} art={artwork} />
+          )
+        )}
       </div>
     </>
   );

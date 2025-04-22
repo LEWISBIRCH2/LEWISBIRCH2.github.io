@@ -21,7 +21,7 @@ export function HomePage() {
       <h2>Some selected highlights from the collection</h2>
 
       <div className="artworks">
-        {artwork.slice(0, 6).map((art) => {
+        {artwork.slice(0, 3).map((art) => {
           return <ArtCard art={art} key={art.id} />;
         })}
       </div>

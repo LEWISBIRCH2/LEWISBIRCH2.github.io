@@ -2,6 +2,8 @@ import axios from "axios";
 
 const URL = "http://localhost:3000";
 
+//     -----     CHICAGO     -----
+
 export async function getGalleries() {
   const response = await axios.get(
     "https://api.artic.edu/api/v1/artworks?fields=id,title,artist_display,date_display,image_id"
@@ -27,24 +29,99 @@ export async function getGallery(id) {
   return post;
 }
 
-export async function createGallery(post) {
-  // const data = await createImage(post.file);
-  // const imageId = data.data.VersionId;
-  // post.imageId = imageId;
+//     -----     MET     -----
 
-  const response = await axios.post(`${URL}/gallery`, post);
-  return response;
+const BASE_URL = "https://collectionapi.metmuseum.org/public/collection/v1";
+
+const DEPARTMENT_IDS = "9|10|11|21";
+
+let allObjectIDs = [];
+
+export async function initializeMetIDs() {
+  if (allObjectIDs.length) return;
+
+  try {
+    const response = await axios.get(`${BASE_URL}/search`, {
+      params: {
+        hasImages: true,
+        departmentId: DEPARTMENT_IDS,
+        q: "*",
+      },
+    });
+
+    const objectIDs = response.data?.objectIDs || [];
+
+    allObjectIDs = [...new Set(objectIDs)].slice(0, 1000);
+  } catch (err) {
+    console.error("Failed to fetch MET object IDs:", err);
+  }
 }
 
-export async function updateGallery(id, post) {
-  const response = await axios.put(`${URL}/gallery/${id}`, post);
-  return response;
+export async function getMetArtworksBatch(start = 0, batchSize = 20) {
+  const artworks = [];
+  const idsToFetch = allObjectIDs.slice(start, start + batchSize);
+
+  for (let id of idsToFetch) {
+    try {
+      const { data } = await axios.get(`${BASE_URL}/objects/${id}`);
+      if (
+        data &&
+        data.primaryImageSmall &&
+        data.title &&
+        data.artistDisplayName
+      ) {
+        artworks.push(data);
+      }
+    } catch (err) {}
+  }
+
+  return artworks;
 }
 
-export async function deleteGallery(id) {
-  const response = await axios.delete(`${URL}/gallery/${id}`);
-  return response;
+// OLD
+export async function getMetGalleries() {
+  const response = await axios.get(
+    "https://api.artic.edu/api/v1/artworks?fields=id,title,artist_display,date_display,image_id"
+  );
+  if (response.status === 200) {
+    return response.data;
+  } else {
+    return;
+  }
 }
+
+export async function getMetGalleriesPage(page = 1) {
+  const response = await axios.get(
+    `https://api.artic.edu/api/v1/artworks?page=${page}&limit=80&fields=id,title,artist_display,date_display,image_id`
+  );
+  return response.data;
+}
+
+export async function getMetGallery(id) {
+  const response = await axios.get(`https://api.artic.edu/api/v1/artworks
+/${id}`);
+  const post = response.data;
+  return post;
+}
+
+// export async function createGallery(post) {
+//   // const data = await createImage(post.file);
+//   // const imageId = data.data.VersionId;
+//   // post.imageId = imageId;
+
+//   const response = await axios.post(`${URL}/gallery`, post);
+//   return response;
+// }
+
+// export async function updateGallery(id, post) {
+//   const response = await axios.put(`${URL}/gallery/${id}`, post);
+//   return response;
+// }
+
+// export async function deleteGallery(id) {
+//   const response = await axios.delete(`${URL}/gallery/${id}`);
+//   return response;
+// }
 
 //     -----      Users     ------
 
