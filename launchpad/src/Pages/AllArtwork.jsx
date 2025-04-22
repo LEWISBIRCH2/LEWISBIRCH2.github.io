@@ -76,7 +76,6 @@ export function AllArtwork() {
         {" "}
         The Metropolitan Museum of Art{" "}
       </button>
-      <button> Museum #3</button>
 
       {museum && (
         <div style={{ marginTop: "20px" }}>
