@@ -2,7 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ChicagoArtCard } from "../Components/ChicagoArtCard";
 import { MetArtCard } from "../Components/MetArtCard";
-import { getGalleries, getMetArtworks } from "../api";
+import {
+  getGalleries,
+  getMetArtworks,
+  initializeMetIDs,
+  getMetArtworksBatch,
+} from "../api";
 import axios from "axios";
 import { getGalleriesPage } from "../api";
 
@@ -22,7 +27,8 @@ export function AllArtwork() {
       }
 
       if (museum === "met") {
-        const metData = await getMetArtworks(page);
+        await initializeMetIDs();
+        const metData = await getMetArtworksBatch((page - 1) * 20, 20);
         setRawArt(metData);
       }
     }
@@ -49,11 +55,6 @@ export function AllArtwork() {
   function handleSortChange(e) {
     setSortOrder(e.target.value);
   }
-  //   async function handleChicago() {
-  //     // CURRENTLY, get galleries ONLY gets Chicago. DO NOT FORGET THIS.
-  //     const data = await getGalleries();
-  //     setArt(data.data);
-  //   }
 
   return (
     <>
@@ -67,7 +68,7 @@ export function AllArtwork() {
         The Art Institute of Chicago{" "}
       </button>
       <button
-        onClick={() => {
+        onClick={async () => {
           setMuseum("met");
           setPage(1);
         }}
