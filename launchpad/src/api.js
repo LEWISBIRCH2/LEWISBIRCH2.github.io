@@ -24,13 +24,18 @@ export async function getGalleriesPage(page = 1) {
   return response.data;
 }
 
-export async function getGallery(id) {
-  const response = await axios.get(`https://api.artic.edu/api/v1/artworks
-/${id}`);
-  const post = response.data;
-  return post;
+export async function getChicagoGallery(id) {
+  console.log("GET CHICAGO GALLERY");
+  try {
+    let response = await axios.get(
+      `https://api.artic.edu/api/v1/artworks/${id}`
+    );
+    console.log("response", response);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 }
-
 //     -----     MET     -----
 
 // Calls API for Object ID's
@@ -96,12 +101,9 @@ export async function getMetArtworksBatch(start = 0, batchSize = 20) {
   return artworks;
 }
 
-// OLD
-
-
 export async function getMetGallery(id) {
-  const response = await axios.get(`https://api.artic.edu/api/v1/artworks
-/${id}`);
+  let response = await axios.get(`${BASE_URL}/objects/${id}`);
+
   const post = response.data;
   return post;
 }
