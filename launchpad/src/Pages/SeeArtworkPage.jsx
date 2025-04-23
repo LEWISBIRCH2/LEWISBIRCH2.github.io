@@ -52,6 +52,7 @@ export function SeeArtwork() {
           />
         ) : null}
       </div>
+      <button>Press here to add this artwork to your personal exhibit</button>
     </>
   );
 }
