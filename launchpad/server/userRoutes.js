@@ -23,6 +23,11 @@ userRoutes.route("/Users").get(async (request, response) => {
 // Retrieve One
 userRoutes.route("/Users/:id").get(async (request, response) => {
   let db = database.getDb();
+  const userId = request.params.id;
+  if (!ObjectId.isValid(userId)) {
+    return response.status(400).json({ message: "Invalid user ID format" });
+  }
+
   let data = await db
     .collection("Users")
     .findOne({ _id: new ObjectId(request.params.id) });
@@ -109,4 +114,23 @@ userRoutes.route("/Users/login").post(async (request, response) => {
   }
 });
 
+userRoutes.route("/Users/:id/add-artwork").post(async (req, res) => {
+  const db = database.getDb();
+  const userId = req.params.id;
+  const artwork = req.body.artwork;
+
+  if (!artwork) return res.status(400).json({ message: "No artwork provided" });
+
+  try {
+    const result = await db
+      .collection("Users")
+      .updateOne(
+        { _id: new ObjectId(userId) },
+        { $addToSet: { personalExhibit: artwork } }
+      );
+    res.json({ message: "Artwork added", result });
+  } catch (err) {
+    res.status(500).json({ message: "Error adding artwork", error: err });
+  }
+});
 module.exports = userRoutes;

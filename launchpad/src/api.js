@@ -30,7 +30,6 @@ export async function getChicagoGallery(id) {
     let response = await axios.get(
       `https://api.artic.edu/api/v1/artworks/${id}`
     );
-    console.log("Got Chic Gallery SUCCESS", response);
     return response.data;
   } catch (error) {
     throw error;
@@ -108,25 +107,6 @@ export async function getMetGallery(id) {
   return post;
 }
 
-// export async function createGallery(post) {
-//   // const data = await createImage(post.file);
-//   // const imageId = data.data.VersionId;
-//   // post.imageId = imageId;
-
-//   const response = await axios.post(`${URL}/gallery`, post);
-//   return response;
-// }
-
-// export async function updateGallery(id, post) {
-//   const response = await axios.put(`${URL}/gallery/${id}`, post);
-//   return response;
-// }
-
-// export async function deleteGallery(id) {
-//   const response = await axios.delete(`${URL}/gallery/${id}`);
-//   return response;
-// }
-
 export async function getUser(user) {
   const response = await axios.get(`${URL}/users/${user}`);
   if (response.status === 200) {
@@ -135,7 +115,6 @@ export async function getUser(user) {
     return;
   }
 }
-
 export async function createUser(user) {
   const response = await axios.post(`${URL}/users`, user);
   return response;

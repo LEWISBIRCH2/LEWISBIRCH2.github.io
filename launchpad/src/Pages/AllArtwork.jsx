@@ -17,7 +17,6 @@ export function AllArtwork() {
   const [museum, setMuseum] = useState(null);
   const [page, setPage] = useState(1);
   const [sortOrder, setSortOrder] = useState(null);
-  // const [info, setInfo] = useState({});
 
   useEffect(() => {
     async function fetchArt() {

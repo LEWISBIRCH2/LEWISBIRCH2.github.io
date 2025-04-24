@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getChicagoGallery, getMetGallery } from "../api";
+import axios from "axios";
+import * as jwt_decode from "jwt-decode";
 
 export function SeeArtwork() {
   const [artworks, setArtworks] = useState([]);
   const [museum, setMuseum] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -16,7 +19,7 @@ export function SeeArtwork() {
         setMuseum("chicago");
         console.log("GET CHIC GALL - SEE ARTWORK");
       } catch (error) {
-        if (error.response?.status === 404) {
+        if (error.response?.status === 404 || error.response?.status === 500) {
           try {
             let metData = await getMetGallery(id);
             setArtworks(metData);
@@ -26,8 +29,33 @@ export function SeeArtwork() {
         }
       }
     }
-  fetchArtworks();
+    fetchArtworks();
   }, [id]);
+
+  async function handleAddToExhibit() {
+    const token = localStorage.getItem("User");
+    const decoded = JSON.parse(atob(token.split(".")[1]));
+    const userId = decoded._id;
+    setIsChecked(!isChecked);
+
+    try {
+      await axios.post(
+        `http://localhost:3000/Users/${userId}/add-artwork`,
+        {
+          artwork: artworks,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      alert("Artwork added to your personal exhibit!");
+    } catch (err) {
+      console.error("Error adding artwork:", err);
+      alert("Failed to add artwork.");
+    }
+  }
 
   return (
     <>
@@ -52,7 +80,14 @@ export function SeeArtwork() {
           />
         ) : null}
       </div>
-      <button>Press here to add this artwork to your personal exhibit</button>
+      <label>
+        <input
+          type="checkbox"
+          checked={isChecked}
+          onChange={handleAddToExhibit}
+        />
+        Add to personal exhibit
+      </label>
     </>
   );
 }
