@@ -1,8 +1,6 @@
 import { getGalleries } from "../api";
 import { useState, useEffect } from "react";
 import { ArtCard } from "../Components/ArtCard";
-import { AllArtwork } from "./AllArtwork";
-import { Link } from "react-router-dom";
 
 export function HomePage() {
   const [artwork, setArtwork] = useState([]);

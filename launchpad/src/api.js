@@ -30,7 +30,7 @@ export async function getChicagoGallery(id) {
     let response = await axios.get(
       `https://api.artic.edu/api/v1/artworks/${id}`
     );
-    console.log("response", response);
+    console.log("Got Chic Gallery SUCCESS", response);
     return response.data;
   } catch (error) {
     throw error;

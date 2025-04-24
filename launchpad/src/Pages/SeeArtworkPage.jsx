@@ -11,10 +11,10 @@ export function SeeArtwork() {
   useEffect(() => {
     async function fetchArtworks() {
       try {
-        console.log("GET CHIC GALL - SEE ARTWORK");
         let data = await getChicagoGallery(id);
         setArtworks(data.data);
         setMuseum("chicago");
+        console.log("GET CHIC GALL - SEE ARTWORK");
       } catch (error) {
         if (error.response?.status === 404) {
           try {
@@ -26,7 +26,7 @@ export function SeeArtwork() {
         }
       }
     }
-    fetchArtworks();
+  fetchArtworks();
   }, [id]);
 
   return (
