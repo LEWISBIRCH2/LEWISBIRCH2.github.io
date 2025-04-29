@@ -10,6 +10,7 @@ import {
 } from "../api";
 import axios from "axios";
 import { getGalleriesPage } from "../api";
+import CustomSpinner from "../Components/Spinner";
 
 export function AllArtwork() {
   const [rawArt, setRawArt] = useState([]);
@@ -17,9 +18,11 @@ export function AllArtwork() {
   const [museum, setMuseum] = useState(null);
   const [page, setPage] = useState(1);
   const [sortOrder, setSortOrder] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function fetchArt() {
+      setLoading(true);
       if (museum === "chicago") {
         const data = await getGalleriesPage(page);
         setRawArt(data.data);
@@ -30,6 +33,7 @@ export function AllArtwork() {
         const metData = await getMetArtworksBatch((page - 1) * 20, 20);
         setRawArt(metData);
       }
+      setLoading(false);
     }
     fetchArt();
   }, [museum, page]);
@@ -64,7 +68,7 @@ export function AllArtwork() {
           setPage(1);
         }}
       >
-        The Art Institute of Chicago{" "}
+        The Art Institute of Chicago
       </button>
       <button
         onClick={async () => {
@@ -72,42 +76,49 @@ export function AllArtwork() {
           setPage(1);
         }}
       >
-        {" "}
-        The Metropolitan Museum of Art{" "}
+        The Metropolitan Museum of Art
       </button>
 
-      {museum && (
-        <div style={{ marginTop: "20px" }}>
-          <button disabled={page === 1} onClick={handlePrevious}>
-            Previous
-          </button>
-          <span style={{ margin: "0 10px" }}>Page {page}</span>
-          <button onClick={handleNext}>Next</button>
+      {loading ? (
+        <div style={{ marginTop: "2rem", textAlign: "center" }}>
+          <CustomSpinner />
         </div>
-      )}
-
-      {art.length > 0 && (
-        <div style={{ margin: "20px 0" }}>
-          <label>Sort by Title: </label>
-          <select onChange={handleSortChange} value={sortOrder || ""}>
-            <option value="">None</option>
-            <option value="asc">A → Z</option>
-            <option value="desc">Z → A</option>
-          </select>
-        </div>
-      )}
-
-      <div className="chicago-artwork">
-        {art
-          .slice(0, 16)
-          .map((artwork) =>
-            museum === "met" ? (
-              <MetArtCard key={artwork.objectID} art={artwork} />
-            ) : (
-              <ChicagoArtCard key={artwork._id} art={artwork} />
-            )
+      ) : (
+        <>
+          {museum && (
+            <div style={{ marginTop: "20px" }}>
+              <button disabled={page === 1} onClick={handlePrevious}>
+                Previous
+              </button>
+              <span style={{ margin: "0 10px" }}>Page {page}</span>
+              <button onClick={handleNext}>Next</button>
+            </div>
           )}
-      </div>
+
+          {art.length > 0 && (
+            <div style={{ margin: "20px 0" }}>
+              <label>Sort by Title: </label>
+              <select onChange={handleSortChange} value={sortOrder || ""}>
+                <option value="">None</option>
+                <option value="asc">A → Z</option>
+                <option value="desc">Z → A</option>
+              </select>
+            </div>
+          )}
+
+          <div className="chicago-artwork">
+            {art
+              .slice(0, 16)
+              .map((artwork) =>
+                museum === "met" ? (
+                  <MetArtCard key={artwork.objectID} art={artwork} />
+                ) : (
+                  <ChicagoArtCard key={artwork._id} art={artwork} />
+                )
+              )}
+          </div>
+        </>
+      )}
     </>
   );
 }
