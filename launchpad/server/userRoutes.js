@@ -144,7 +144,9 @@ userRoutes.route("/Users/:id/remove-artwork").post(async (req, res) => {
       { _id: new ObjectId(userId) },
       {
         $pull: {
-          personalExhibit: { id: artworkId },
+          personalExhibit: {
+            $or: [{ id: artworkId }, { objectID: artworkId }],
+          },
         },
       }
     );
