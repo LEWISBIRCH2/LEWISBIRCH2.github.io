@@ -8,20 +8,21 @@ export function HomePage() {
   useEffect(() => {
     async function loadAllArtwork() {
       const data = await getGalleries();
-      setArtwork(data.data);
+      const shuffled = data.data.sort(() => 0.5 - Math.random());
+      setArtwork(shuffled.slice(0, 3));
     }
     loadAllArtwork();
   }, []);
 
   return (
     <>
-      <h1>Highlights </h1>
+      <h1>Highlights</h1>
       <h2>Some selected highlights from the collection</h2>
 
       <div className="artworks">
-        {artwork.slice(0, 3).map((art) => {
-          return <ArtCard art={art} key={art.id} />;
-        })}
+        {artwork.map((art) => (
+          <ArtCard art={art} key={art.id} />
+        ))}
       </div>
     </>
   );
