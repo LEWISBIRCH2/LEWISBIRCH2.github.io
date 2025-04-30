@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getChicagoGallery, getMetGallery } from "../api";
 import axios from "axios";
-import * as jwt_decode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
 export function SeeArtwork() {
   const [artworks, setArtworks] = useState([]);
@@ -17,14 +17,12 @@ export function SeeArtwork() {
         let data = await getChicagoGallery(id);
         setArtworks(data.data);
         setMuseum("chicago");
-        console.log("GET CHIC GALL - SEE ARTWORK");
       } catch (error) {
         if (error.response?.status === 404 || error.response?.status === 500) {
           try {
             let metData = await getMetGallery(id);
             setArtworks(metData);
             setMuseum("met");
-            console.log("MET DATA", metData);
           } catch (errorMet) {}
         }
       }
@@ -34,7 +32,7 @@ export function SeeArtwork() {
 
   async function handleAddToExhibit() {
     const token = localStorage.getItem("User");
-    const decoded = JSON.parse(atob(token.split(".")[1]));
+    const decoded = jwtDecode(token);
     const userId = decoded._id;
     setIsChecked(!isChecked);
 
@@ -43,12 +41,11 @@ export function SeeArtwork() {
         `http://localhost:3000/Users/${userId}/add-artwork`,
         {
           artwork: artworks,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
         }
+        // {
+        //   headers: {
+        //     Authorization: `Bearer ${token}`,
+        //   },
       );
       alert("Artwork added to your personal exhibit!");
     } catch (err) {
