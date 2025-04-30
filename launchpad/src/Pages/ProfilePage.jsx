@@ -23,6 +23,28 @@ export function ProfilePage() {
     loadUserData();
   }, []);
 
+  async function handleRemoveArtwork(artworkId) {
+    const token = localStorage.getItem("User"); // Would I need this? If removing all headers
+    try {
+      await axios.post(
+        `http://localhost:3000/Users/${user._id}/remove-artwork`,
+        { artworkId }
+        // {
+        //   headers: {
+        //     Authorization: `Bearer ${token}`,
+        //   },
+        // }
+      );
+      alert("Successfully removed artwork!");
+
+      setExhibit((prev) =>
+        prev.filter((art) => (art.id || art.objectID) !== artworkId)
+      );
+    } catch (err) {
+      alert("Could not remove artwork.");
+    }
+  }
+
   return (
     <>
       <label>Name:</label>
@@ -54,6 +76,12 @@ export function ProfilePage() {
                   width="300"
                 />
               ) : null}
+              <br></br>
+              <button
+                onClick={() => handleRemoveArtwork(art.id || art.objectID)}
+              >
+                Remove from Personal Exhibit
+              </button>
             </div>
           </li>
         ))}

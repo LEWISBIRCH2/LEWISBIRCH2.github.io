@@ -133,4 +133,25 @@ userRoutes.route("/Users/:id/add-artwork").post(async (req, res) => {
     res.status(500).json({ message: "Error adding artwork", error: err });
   }
 });
+
+userRoutes.route("/Users/:id/remove-artwork").post(async (req, res) => {
+  const db = database.getDb();
+  const userId = req.params.id;
+  const artworkId = req.body.artworkId;
+
+  try {
+    const result = await db.collection("Users").updateOne(
+      { _id: new ObjectId(userId) },
+      {
+        $pull: {
+          personalExhibit: { id: artworkId },
+        },
+      }
+    );
+    res.json({ message: "Artwork removed", result });
+  } catch (err) {
+    res.status(500).json({ message: "Error removing artwork", error: err });
+  }
+});
+
 module.exports = userRoutes;

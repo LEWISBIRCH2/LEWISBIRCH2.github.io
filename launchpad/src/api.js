@@ -25,7 +25,6 @@ export async function getGalleriesPage(page = 1) {
 }
 
 export async function getChicagoGallery(id) {
-  console.log("GET CHICAGO GALLERY");
   try {
     let response = await axios.get(
       `https://api.artic.edu/api/v1/artworks/${id}`
