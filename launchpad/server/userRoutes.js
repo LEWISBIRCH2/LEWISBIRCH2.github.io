@@ -81,14 +81,14 @@ userRoutes.route("/Users/:id").put(async (request, response) => {
   response.json(data);
 });
 
-// Delete
-userRoutes.route("/Users/:id").delete(async (request, response) => {
-  let db = database.getDb();
-  let data = await db
-    .collection("Users")
-    .deleteOne({ _id: new ObjectId(request.params.id) });
-  response.json(data);
-});
+// // Delete
+// userRoutes.route("/Users/:id").delete(async (request, response) => {
+//   let db = database.getDb();
+//   let data = await db
+//     .collection("Users")
+//     .deleteOne({ _id: new ObjectId(request.params.id) });
+//   response.json(data);
+// });
 
 //     -----     Login     -----
 userRoutes.route("/Users/login").post(async (request, response) => {
@@ -104,7 +104,7 @@ userRoutes.route("/Users/login").post(async (request, response) => {
       user.password
     );
     if (confirmation) {
-      const token = jwt.sign(user, process.env.SECRETKEY, { expiresIn: "1h" });
+      const token = jwt.sign(user, process.env.SECRETKEY, { expiresIn: "6h" });
       response.json({ success: true, token });
     } else {
       response.json({ success: false, message: "Incorrect password" });

@@ -8,12 +8,8 @@ export const pageData = [
     path: "/about",
   },
   {
-    name: "Profile",
-    path: "/profile",
-  },
-  {
     name: "Personal Exhibit",
-    path: "/personalexhibit",
+    path: "/profile",
   },
   {
     name: "All Artwork",

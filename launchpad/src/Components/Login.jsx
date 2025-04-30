@@ -20,7 +20,6 @@ export function Login() {
     let response = await verifyUser(user);
     if (response) {
       localStorage.setItem("User", response);
-      axios.defaults.headers.common["Authorization"] = `Bearer ${response}`;
       navigate("/home");
     } else {
       alert("Incorrect details submitted");
