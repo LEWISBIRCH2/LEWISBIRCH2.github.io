@@ -62,7 +62,9 @@ export function SeeArtwork() {
         <p>{artworks.artist_display || artworks.artistDisplayName}</p>
         <p>{artworks.date_display || artworks.objectDate}</p>
         <p>
-          {artworks.description || artworks.medium || "No Description Provided"}
+          {artworks.description?.replace(/<p>/, "").replace(/<\/p>/, "") ||
+            artworks.medium ||
+            "No Description Provided"}
         </p>
         <br></br>
         {artworks.image_id || artworks.primaryImage ? (
