@@ -27,23 +27,27 @@ export function Login() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="loginForm">
-      <input
-        placeholder={"Email"}
-        onChange={handleChange}
-        name="email"
-        required
-        maxLength={40}
-      />
-      <input
-        placeholder={"Password"}
-        onChange={handleChange}
-        name="password"
-        required
-        maxLength={20}
-        type="password"
-      />
-      <button type="submit">Login</button>
-    </form>
+    <>
+      <div className="loginContainer">
+        <form onSubmit={handleSubmit} className="loginForm">
+          <input
+            placeholder={"Email"}
+            onChange={handleChange}
+            name="email"
+            required
+            maxLength={40}
+          />
+          <input
+            placeholder={"Password"}
+            onChange={handleChange}
+            name="password"
+            required
+            maxLength={20}
+            type="password"
+          />
+          <button className="loginButton" type="submit">Login</button>
+        </form>
+      </div>
+    </>
   );
 }

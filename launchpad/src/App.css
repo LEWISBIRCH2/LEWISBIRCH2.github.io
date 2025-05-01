@@ -142,11 +142,13 @@ body {
   justify-content: center;
   text-align: center;
   color: #4e3b31;
+  transition: transform 0.3s ease-in-out;
 }
 
 .highlight-grid > *:hover {
   background-color: rgba(161, 141, 115, 0.9);
   cursor: pointer;
+  transform: scale(1.03);
 }
 
 .about-wrapper {
@@ -167,17 +169,104 @@ body {
   border-radius: 2.6rem;
   text-align: left;
 }
-/*art - ArtCard, any artcard*/
-/*form - Create user form*/
-/*loginForm - Login form*/
-/*about - About info*/
-/*chicago-arwork - Any artwork displayed on the AllArtwork Page*/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
 
-/**/
-/**/
+.landingIntro {
+  text-align: left;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #d9cbae;
+}
+
+.loginForm {
+  width: 20%;
+  background-color: rgba(217, 203, 174, 0.8);
+  padding: 2rem;
+  color: #4e3b31;
+  border: solid 6px #4e3b31;
+  border-radius: 2.6rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.loginContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 30vh;
+  padding-left: 5rem;
+}
+
+.loginButton {
+  width: 80%;
+  align-self: center;
+  text-align: center;
+  padding: 0.6rem;
+  font-weight: bold;
+  background-color: #4e3b31;
+  border: 2px solid #4e3b31;
+  color: #d9cbae;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.createNewAccountButton {
+  padding: 0.6rem;
+  font-weight: bold;
+  background-color: #d9cbae;
+  border: 2px solid #4e3b31;
+  color: #4e3b31;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  margin-top: 0.4rem;
+  margin-left: 12.8rem;
+}
+
+.newAccountContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 30vh;
+  padding-left: 5rem;
+}
+
+.signUpForm {
+  width: 20%;
+  background-color: rgba(217, 203, 174, 0.8);
+  padding: 2rem;
+  color: #4e3b31;
+  border: solid 6px #4e3b31;
+  border-radius: 2.6rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.createAccountButton {
+  width: 80%;
+  align-self: center;
+  text-align: center;
+  padding: 0.6rem;
+  font-weight: bold;
+  background-color: #4e3b31;
+  border: 2px solid #4e3b31;
+  color: #d9cbae;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.existingLogin {
+  padding: 0.6rem;
+  font-weight: bold;
+  background-color: #d9cbae;
+  border: 2px solid #4e3b31;
+  color: #4e3b31;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  margin-top: 0.4rem;
+  margin-left: 11rem;
+}

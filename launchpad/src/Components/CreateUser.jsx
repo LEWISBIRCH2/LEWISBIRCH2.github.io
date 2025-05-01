@@ -24,31 +24,37 @@ export function CreateUser() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="form">
-      <input
-        placeholder={"Name"}
-        onChange={handleChange}
-        name="name"
-        required
-        maxLength={20}
-      />
-      <input
-        placeholder={"Email"}
-        onChange={handleChange}
-        name="email"
-        type="email"
-        required
-        maxLength={40}
-      />
-      <input
-        placeholder={"Password"}
-        onChange={handleChange}
-        name="password"
-        required
-        maxLength={20}
-        type="password"
-      />
-      <button type="submit">Create Account</button>
-    </form>
+    <>
+      <div className="newAccountContainer">
+        <form className="signUpForm" onSubmit={handleSubmit}>
+          <input
+            placeholder={"Name"}
+            onChange={handleChange}
+            name="name"
+            required
+            maxLength={20}
+          />
+          <input
+            placeholder={"Email"}
+            onChange={handleChange}
+            name="email"
+            type="email"
+            required
+            maxLength={40}
+          />
+          <input
+            placeholder={"Password"}
+            onChange={handleChange}
+            name="password"
+            required
+            maxLength={20}
+            type="password"
+          />
+          <button className="createAccountButton" type="submit">
+            Create Account
+          </button>
+        </form>
+      </div>
+    </>
   );
 }

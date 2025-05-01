@@ -60,7 +60,7 @@ export function SeeArtwork() {
 
   return (
     <>
-      <button onClick={() => navigate(-1)}>Back</button>
+    
 
       {loading ? (
         <div style={{ marginTop: "2rem", textAlign: "center" }}>

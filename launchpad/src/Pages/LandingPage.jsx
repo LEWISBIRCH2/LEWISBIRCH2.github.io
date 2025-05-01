@@ -7,10 +7,15 @@ export function LandingPage() {
 
   return (
     <>
+      <h1 className="landingIntro">
+        Please sign in using your account details. <br></br>If it's your first
+        time here, create an account using the button below.
+      </h1>
       {!view ? (
         <>
           <Login />
           <button
+            className="createNewAccountButton"
             onClick={() => {
               setView(!view);
             }}
@@ -23,6 +28,7 @@ export function LandingPage() {
         <>
           <CreateUser />
           <button
+            className="existingLogin"
             onClick={() => {
               setView(!view);
             }}
