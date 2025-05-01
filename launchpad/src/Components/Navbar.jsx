@@ -11,15 +11,19 @@ export function Navbar() {
   }
 
   return (
-    <div className="navbar">
-      {pageData.map((page) => {
-        return (
-          <Link to={page.path} className="navItem">
-            <button>{page.name}</button>
-          </Link>
-        );
-      })}
-      <button onClick={handleLogout}>Log Out</button>
-    </div>
+    <>
+      <div className="navbar">
+        {pageData.map((page) => {
+          return (
+            <Link to={page.path} className="navItem">
+              <button className="navButton">{page.name}</button>
+            </Link>
+          );
+        })}
+      </div>
+      <button className="logoutButton" onClick={handleLogout}>
+        Log Out
+      </button>
+    </>
   );
 }

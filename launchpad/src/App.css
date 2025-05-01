@@ -17,30 +17,59 @@ body {
   background-position: center;
 }
 
-.navBar {
+/* .navBar {
   position: fixed;
   top: 0;
   width: 50%;
   left: 25%;
   display: flex;
   justify-content: space-between;
-}
+} */
 
 .navItem {
-  padding: 12px 20px;
-  margin: 6px;
+  padding: 0.2rem 0.2rem;
+  margin: 2rem;
   font-size: 1.3rem;
   font-weight: bold;
   background-color: rgba(217, 203, 174, 0.9);
   border: 2px solid #4e3b31;
   border-radius: 10px;
   color: #4e3b31;
+  border: solid 4px #4e3b31;
+  border-radius: 0.6rem;
 }
 
 .navItem:hover {
   background-color: rgba(217, 203, 174, 1);
 }
 
+.navButton {
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  background-color: rgba(217, 203, 174, 0);
+  color: #4e3b31;
+  transition: transform 0.4s ease-in-out;
+}
+
+.navButton:hover {
+  transform: scale(1.3);
+  cursor: pointer;
+}
+
+.logoutButton {
+  background-color: lightcoral;
+  border: rgb(0, 0, 0) solid 2px;
+  font-weight: bold;
+  float: right;
+  margin-right: -4rem;
+  margin-top: -1rem;
+  transition: transform 0.4s ease-in-out;
+}
+.logoutButton:hover {
+  transform: scale(1.3);
+  cursor: pointer;
+}
 .artworks {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -55,10 +84,10 @@ body {
   border-radius: 10px;
 }
 
-.art:hover {
+/* .art:hover {
   cursor: pointer;
   background-color: #aaa;
-}
+} */
 
 .chicago-artwork {
   display: grid;
@@ -80,7 +109,7 @@ body {
 }
 
 .top-left {
-  font-size: 3rem;
+  font-size: 3.7rem;
   font-weight: bold;
   color: #d9cbae;
 }
@@ -88,11 +117,14 @@ body {
 .top-right {
   font-size: 1.5rem;
   color: #4e3b31;
-  text-align: right;
-
   border: solid 6px #4e3b31;
-  background-color: rgba(217, 203, 174, 0.8);
   border-radius: 2.6rem;
+  background-color: rgba(217, 203, 174, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .highlight-grid {
@@ -104,6 +136,32 @@ body {
   border-radius: 2.6rem;
 }
 
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  background-color: rgba(217, 203, 174, 0.8);
+  padding: 1rem;
+}
+
+.highlight-grid > * {
+  border: 6px solid #4e3b31;
+  border-radius: 1.5rem;
+  padding: 1rem;
+  background-color: #c0b2a169;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #4e3b31;
+}
+
+.highlight-grid > *:hover {
+  background-color: rgba(161, 141, 115, 0.9);
+  cursor: pointer;
+}
 /*art - ArtCard, any artcard*/
 /*form - Create user form*/
 /*loginForm - Login form*/
