@@ -17,15 +17,6 @@ body {
   background-position: center;
 }
 
-/* .navBar {
-  position: fixed;
-  top: 0;
-  width: 50%;
-  left: 25%;
-  display: flex;
-  justify-content: space-between;
-} */
-
 .navItem {
   padding: 0.2rem 0.2rem;
   margin: 2rem;
@@ -83,11 +74,6 @@ body {
   padding: 4px;
   border-radius: 10px;
 }
-
-/* .art:hover {
-  cursor: pointer;
-  background-color: #aaa;
-} */
 
 .chicago-artwork {
   display: grid;
@@ -161,6 +147,25 @@ body {
 .highlight-grid > *:hover {
   background-color: rgba(161, 141, 115, 0.9);
   cursor: pointer;
+}
+
+.about-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 80vh;
+  padding-left: 5%;
+}
+
+.about {
+  width: 50%;
+  background-color: rgba(217, 203, 174, 0.8);
+  padding: 4rem;
+  font-size: 1.5rem;
+  color: #4e3b31;
+  border: solid 6px #4e3b31;
+  border-radius: 2.6rem;
+  text-align: left;
 }
 /*art - ArtCard, any artcard*/
 /*form - Create user form*/
