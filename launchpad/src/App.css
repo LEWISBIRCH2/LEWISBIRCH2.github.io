@@ -1,6 +1,20 @@
 * {
   justify-content: center;
   text-align: center;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-top: 0.2rem;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Georgia", serif;
+  background-image: url("../public/vecteezy_classic-marble-statue-of-a-philosopher-on-warm-background_53187725.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 .navBar {
@@ -13,12 +27,18 @@
 }
 
 .navItem {
-  padding: 4px;
-  margin: 4px;
-  color: white;
-  border-style: solid;
-  border-width: 2px;
-  border-radius: 4px;
+  padding: 12px 20px;
+  margin: 6px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  background-color: rgba(217, 203, 174, 0.9);
+  border: 2px solid #4e3b31;
+  border-radius: 10px;
+  color: #4e3b31;
+}
+
+.navItem:hover {
+  background-color: rgba(217, 203, 174, 1);
 }
 
 .artworks {
@@ -46,3 +66,55 @@
   gap: 1rem;
   margin-top: 2rem;
 }
+
+.home-container {
+  padding: 2rem;
+  margin-top: 1rem;
+}
+
+.top-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.top-left {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #d9cbae;
+}
+
+.top-right {
+  font-size: 1.5rem;
+  color: #4e3b31;
+  text-align: right;
+
+  border: solid 6px #4e3b31;
+  background-color: rgba(217, 203, 174, 0.8);
+  border-radius: 2.6rem;
+}
+
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  border: #4e3b31 6px solid;
+  background-color: rgba(217, 203, 174, 0.8);
+  border-radius: 2.6rem;
+}
+
+/*art - ArtCard, any artcard*/
+/*form - Create user form*/
+/*loginForm - Login form*/
+/*about - About info*/
+/*chicago-arwork - Any artwork displayed on the AllArtwork Page*/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+
+/**/
+/**/

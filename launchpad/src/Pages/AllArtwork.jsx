@@ -1,14 +1,7 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { ChicagoArtCard } from "../Components/ChicagoArtCard";
 import { MetArtCard } from "../Components/MetArtCard";
-import {
-  getGalleries,
-  getMetArtworks,
-  initializeMetIDs,
-  getMetArtworksBatch,
-} from "../api";
-import axios from "axios";
+import { initializeMetIDs, getMetArtworksBatch } from "../api";
 import { getGalleriesPage } from "../api";
 import CustomSpinner from "../Components/Spinner";
 

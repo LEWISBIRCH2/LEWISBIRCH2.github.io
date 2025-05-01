@@ -19,22 +19,30 @@ export function HomePage() {
   }, []);
 
   return (
-    <>
-      <h1>Highlights</h1>
-      <h2>Some selected highlights from the collection</h2>
+    <div className="home-container">
+      <div className="top-row">
+        <div className="top-left">
+          <h1>
+            The Launchpad <br></br>Project
+          </h1>
+        </div>
+        <div className="top-right">
+          <h1>Highlights</h1>
+          <h2>Browse selected highlights from the collection</h2>
+        </div>
+      </div>
+
       {loading ? (
         <div style={{ marginTop: "2rem", textAlign: "center" }}>
           <CustomSpinner />
         </div>
       ) : (
-        <>
-          <div className="artworks">
-            {artwork.map((art) => (
-              <ArtCard art={art} key={art.id} />
-            ))}
-          </div>
-        </>
+        <div className="highlight-grid">
+          {artwork.map((art) => (
+            <ArtCard art={art} key={art.id} />
+          ))}
+        </div>
       )}
-    </>
+    </div>
   );
 }

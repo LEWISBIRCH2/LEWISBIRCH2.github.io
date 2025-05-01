@@ -24,7 +24,7 @@ export function CreateUser() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="form">
       <input
         placeholder={"Name"}
         onChange={handleChange}

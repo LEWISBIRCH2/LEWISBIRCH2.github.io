@@ -7,8 +7,7 @@ import { HomePage } from "./Pages/HomePage";
 import { AllArtwork } from "./Pages/AllArtwork";
 import "./App.css";
 import { Layout } from "./Components/Layout";
-import axios from "axios";
-import { useState, useEffect } from "react";
+
 
 function App() {
 

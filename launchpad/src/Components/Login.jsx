@@ -27,7 +27,7 @@ export function Login() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="loginForm">
       <input
         placeholder={"Email"}
         onChange={handleChange}
