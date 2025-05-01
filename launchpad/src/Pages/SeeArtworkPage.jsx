@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getChicagoGallery, getMetGallery } from "../api";
 import axios from "axios";
+import CustomSpinner from "../Components/Spinner";
 import { jwtDecode } from "jwt-decode";
 
 export function SeeArtwork() {
@@ -9,10 +10,12 @@ export function SeeArtwork() {
   const [museum, setMuseum] = useState("");
   const [isChecked, setIsChecked] = useState(false);
   const { id } = useParams();
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchArtworks() {
+      setLoading(true);
       try {
         let data = await getChicagoGallery(id);
         setArtworks(data.data);
@@ -26,6 +29,7 @@ export function SeeArtwork() {
           } catch (errorMet) {}
         }
       }
+      setLoading(false);
     }
     fetchArtworks();
   }, [id]);
@@ -57,36 +61,47 @@ export function SeeArtwork() {
   return (
     <>
       <button onClick={() => navigate(-1)}>Back</button>
-      <div key={artworks.id} style={{ marginBottom: "2rem" }}>
-        <h2>{artworks.title}</h2>
-        <p>{artworks.artist_display || artworks.artistDisplayName}</p>
-        <p>{artworks.date_display || artworks.objectDate}</p>
-        <p>
-          {artworks.description?.replace(/<p>/, "").replace(/<\/p>/, "") ||
-            artworks.medium ||
-            "No Description Provided"}
-        </p>
-        <br></br>
-        {artworks.image_id || artworks.primaryImage ? (
-          <img
-            src={
-              artworks.image_id
-                ? `https://www.artic.edu/iiif/2/${artworks.image_id}/full/843,/0/default.jpg`
-                : artworks.primaryImage
-            }
-            alt={artworks.title || artworks.medium}
-            width="300"
-          />
-        ) : null}
-      </div>
-      <label>
-        <input
-          type="checkbox"
-          checked={isChecked}
-          onChange={handleAddToExhibit}
-        />
-        Add to personal exhibit
-      </label>
+
+      {loading ? (
+        <div style={{ marginTop: "2rem", textAlign: "center" }}>
+          <CustomSpinner />
+        </div>
+      ) : (
+        <>
+          <div key={artworks.id} style={{ marginBottom: "2rem" }}>
+            <h2>{artworks.title}</h2>
+            <p>{artworks.artist_display || artworks.artistDisplayName}</p>
+            <p>{artworks.date_display || artworks.objectDate}</p>
+            <p>
+              {artworks.description
+                ?.replace(/<[a-z]{0,}>/gi, "")
+                .replace(/<\/[a-z]{0,}>/gi, "") ||
+                artworks.medium ||
+                "No Description Provided"}
+            </p>
+            <br></br>
+            {artworks.image_id || artworks.primaryImage ? (
+              <img
+                src={
+                  artworks.image_id
+                    ? `https://www.artic.edu/iiif/2/${artworks.image_id}/full/843,/0/default.jpg`
+                    : artworks.primaryImage
+                }
+                alt={artworks.title || artworks.medium}
+                width="300"
+              />
+            ) : null}
+          </div>
+          <label>
+            <input
+              type="checkbox"
+              checked={isChecked}
+              onChange={handleAddToExhibit}
+            />
+            Add to personal exhibit
+          </label>
+        </>
+      )}
     </>
   );
 }

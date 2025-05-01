@@ -57,12 +57,16 @@ export function ProfilePage() {
       <ul>
         {exhibit.map((art, i) => (
           <li key={i}>
-            <div key={art.id} style={{ marginBottom: "2rem" }}>
+            <div key={art.id || art.objectID} style={{ marginBottom: "2rem" }}>
               <h2>{art.title}</h2>
               <p>{art.artist_display || art.artistDisplayName}</p>
               <p>{art.date_display || art.objectDate}</p>
               <p>
-                {art.description || art.medium || "No Description Provided"}
+                {art.description
+                  ?.replace(/<[a-z]{0,}>/gi, "")
+                  .replace(/<\/[a-z]{0,}>/gi, "") ||
+                  art.medium ||
+                  "No Description Provided"}
               </p>
               <br></br>
               {art.image_id || art.primaryImage ? (
