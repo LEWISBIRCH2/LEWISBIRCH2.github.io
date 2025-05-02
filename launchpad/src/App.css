@@ -354,3 +354,251 @@ body {
   cursor: pointer;
   margin-top: auto;
 }
+.singleArtContainer {
+  width: 80%;
+  height: 80vh;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  color: #4e3b31;
+  border: solid 6px #4e3b31;
+  border-radius: 2.6rem;
+  background-color: rgba(217, 203, 174, 0.8);
+  padding: 2rem;
+  margin-left: 8rem;
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.singleArtContent {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+.singleArtText {
+  flex: 2;
+  text-align: left;
+  line-height: 1.3;
+  overflow-y: auto;
+  max-height: 100%;
+  direction: rtl;
+  text-align: left;
+}
+
+.singleArtText > * {
+  direction: ltr;
+}
+
+.singleArtText h3 {
+  direction: ltr;
+  text-align: left;
+  margin-left: 0;
+}
+
+.singleImage {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.singleImage img {
+  max-width: 95%;
+  max-height: 95%;
+  object-fit: contain;
+  border-radius: 1rem;
+}
+
+.singleArtText::-webkit-scrollbar {
+  width: 10px;
+}
+
+.singleArtText::-webkit-scrollbar-track {
+  background: #d9cbae;
+  border-radius: 10px;
+}
+
+.singleArtText::-webkit-scrollbar-thumb {
+  background: #4e3b31;
+  border-radius: 10px;
+}
+
+.singleArtText::-webkit-scrollbar-thumb:hover {
+  background: #3b2d24;
+}
+
+.addToExhibitBox {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.addToExhibitBox input[type="checkbox"] {
+  appearance: none;
+  width: 40px;
+  height: 20px;
+  border: 2px solid #4e3b31;
+  background-color: rgba(217, 203, 174, 0.8);
+  position: relative;
+  cursor: pointer;
+  margin-left: 50rem;
+}
+
+.addToExhibitBox input[type="checkbox"]:checked {
+  background-color: #4e3b31;
+}
+
+.addToExhibitBox input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #d9cbae;
+  border-radius: 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.addToExhibitBox label {
+  font-weight: bold;
+  color: #4e3b31;
+  font-size: 1.2rem;
+}
+
+.topTextContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding: 0 20px;
+  border: #4e3b31 solid 6px;
+  border-radius: 2.6rem;
+  background-color: #d9cbae;
+}
+
+.topTextContainer h2 {
+  flex: 1;
+  font-size: 1.8rem;
+  text-align: center;
+  font-weight: 600;
+  color: #333;
+}
+
+.chicagoButton {
+  padding: 0.8rem 1.5rem;
+  font-size: 1.2rem;
+  background-color: #4e3b31;
+  color: #d9cbae;
+  border: none;
+  border-radius: 2.6rem;
+  cursor: pointer;
+  flex: 1;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.chicagoButton:hover {
+  background-color: #3b2d24;
+}
+
+.metButton {
+  padding: 0.8rem 1.5rem;
+  font-size: 1.2rem;
+  background-color: #4e3b31;
+  color: #d9cbae;
+  border: none;
+  border-radius: 2.6rem;
+  cursor: pointer;
+  flex: 1;
+  transition: background-color 0.3s ease;
+  margin-right: 5px;
+}
+
+.metButton:hover {
+  background-color: #3b2d24;
+}
+
+@media (max-width: 800px) {
+  .topTextContainer {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .chicagoButton,
+  .metButton {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+.paginationAndSortContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.6rem;
+  gap: 4rem;
+}
+
+.paginationControls {
+  display: flex;
+  align-items: center;
+  border: #4e3b31 solid 6px;
+  background-color: #d9cbae;
+  border-radius: 2.6rem;
+}
+.pageText {
+  font-size: 1.4rem;
+  color: #333;
+}
+.paginationControls button {
+  padding: 0.6rem 1rem;
+  margin: 0.2rem;
+  background-color: #4e3b31;
+  color: #d9cbae;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.paginationControls button:hover:not(:disabled) {
+  background-color: #3b2d24;
+}
+
+.paginationControls button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.sortControls {
+  display: flex;
+  align-items: center;
+  border: #4e3b31 solid 6px;
+  background-color: #d9cbae;
+  border-radius: 2.6rem;
+}
+
+.sortControls label {
+  font-size: 1.4rem;
+  color: #333;
+}
+
+.sortControls select {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  padding: 0.6rem 1rem;
+  margin: 0.2rem;
+}
+
+@media (max-width: 800px) {
+  .paginationAndSortContainer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+}

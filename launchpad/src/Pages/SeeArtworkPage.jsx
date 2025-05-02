@@ -60,46 +60,56 @@ export function SeeArtwork() {
 
   return (
     <>
-    
-
       {loading ? (
         <div style={{ marginTop: "2rem", textAlign: "center" }}>
           <CustomSpinner />
         </div>
       ) : (
         <>
-          <div key={artworks.id} style={{ marginBottom: "2rem" }}>
-            <h2>{artworks.title}</h2>
-            <p>{artworks.artist_display || artworks.artistDisplayName}</p>
-            <p>{artworks.date_display || artworks.objectDate}</p>
-            <p>
-              {artworks.description
-                ?.replace(/<[a-z]{0,}>/gi, "")
-                .replace(/<\/[a-z]{0,}>/gi, "") ||
-                artworks.medium ||
-                "No Description Provided"}
-            </p>
-            <br></br>
-            {artworks.image_id || artworks.primaryImage ? (
-              <img
-                src={
-                  artworks.image_id
-                    ? `https://www.artic.edu/iiif/2/${artworks.image_id}/full/843,/0/default.jpg`
-                    : artworks.primaryImage
-                }
-                alt={artworks.title || artworks.medium}
-                width="300"
+          <div className="singleArtContainer">
+            <div className="singleArtContent">
+              <div className="singleArtText">
+                <div key={artworks.id} style={{ marginBottom: "2rem" }}>
+                  <h1>{artworks.title}</h1>
+                  <h3>Artist</h3>
+                  <p>{artworks.artist_display || artworks.artistDisplayName}</p>
+                  <h3>Date</h3>
+                  <p>{artworks.date_display || artworks.objectDate}</p>
+                  <h3>Description</h3>
+                  <p>
+                    {artworks.description
+                      ?.replace(/<[a-z]{0,}>/gi, "")
+                      .replace(/<\/[a-z]{0,}>/gi, "") ||
+                      artworks.medium ||
+                      "No Description Provided"}
+                  </p>
+                </div>
+              </div>
+              <br></br>
+              {artworks.image_id || artworks.primaryImage ? (
+                <div className="singleImage">
+                  <img
+                    src={
+                      artworks.image_id
+                        ? `https://www.artic.edu/iiif/2/${artworks.image_id}/full/843,/0/default.jpg`
+                        : artworks.primaryImage
+                    }
+                    alt={artworks.title || artworks.medium}
+                    width="300"
+                  />
+                </div>
+              ) : null}
+            </div>
+            <div className="addToExhibitBox">
+              <input
+                type="checkbox"
+                checked={isChecked}
+                onChange={handleAddToExhibit}
+                disabled={isChecked}
               />
-            ) : null}
+              <label>Add to personal exhibit</label>
+            </div>
           </div>
-          <label>
-            <input
-              type="checkbox"
-              checked={isChecked}
-              onChange={handleAddToExhibit}
-            />
-            Add to personal exhibit
-          </label>
         </>
       )}
     </>

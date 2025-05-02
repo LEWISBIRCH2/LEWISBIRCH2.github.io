@@ -16,7 +16,7 @@ export default function CustomSpinner() {
       />
       <p>
         Retrieving artwork
-        <br></br>
+        <br />
         Please wait...
       </p>
 
