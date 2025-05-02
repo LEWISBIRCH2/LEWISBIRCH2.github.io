@@ -47,20 +47,32 @@ export function ProfilePage() {
 
   return (
     <>
-      <label>Name:</label>
-      <h2>{user.name}</h2>
-      <label>Email:</label>
-      <h2>{user.email}</h2>
-      <h1>-----------------</h1>
-      <br></br>
-      <label>Personal Exhibit:</label>
-      <ul>
+      <div className="profileContainer">
+        <div className="profileUser">
+          <h1>{user.name}'s Personal Exhibit</h1>
+        </div>
+        <div className="personalExhibitHeader">
+          <h2>
+            Add artworks to your personal exhibit by ticking the assigned box
+            when viewing individual artworks
+            <br></br>
+            <br></br>
+            Remove them from your exhibit by selecting the button below
+          </h2>
+        </div>
+      </div>
+      <ul className="personalList">
         {exhibit.map((art, i) => (
           <li key={i}>
             <div key={art.id || art.objectID} style={{ marginBottom: "2rem" }}>
-              <h2>{art.title}</h2>
+              <h1>{art.title}</h1>
+              <h3>Artist</h3>
               <p>{art.artist_display || art.artistDisplayName}</p>
+              <h3>Date</h3>
+
               <p>{art.date_display || art.objectDate}</p>
+              <h3>Description</h3>
+
               <p>
                 {art.description
                   ?.replace(/<[a-z]{0,}>/gi, "")
@@ -82,6 +94,7 @@ export function ProfilePage() {
               ) : null}
               <br></br>
               <button
+                className="removeFromExhibit"
                 onClick={() => handleRemoveArtwork(art.id || art.objectID)}
               >
                 Remove from Personal Exhibit
