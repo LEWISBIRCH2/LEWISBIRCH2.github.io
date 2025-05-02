@@ -107,18 +107,19 @@ export function AllArtwork() {
               )}
             </div>
           )}
-
-          <div className="chicago-artwork">
-            {art
-              .slice(0, 16)
-              .map((artwork) =>
+            <div className="allArtworkPageContainer">
+              {art.slice(0, 16).map((artwork) =>
                 museum === "met" ? (
-                  <MetArtCard key={artwork.objectID} art={artwork} />
+                  <div className="single">
+                    <MetArtCard key={artwork.objectID} art={artwork} />
+                  </div>
                 ) : (
-                  <ChicagoArtCard key={artwork._id} art={artwork} />
+                  <div className="single">
+                    <ChicagoArtCard key={artwork._id} art={artwork} />
+                  </div>
                 )
               )}
-          </div>
+            </div>
         </>
       )}
     </>
