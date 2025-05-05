@@ -1,5 +1,6 @@
 **Accessing the Platform** 
-To access the plaform, users are welcome to create their own accounts. If you would like to browse using a pre-existing account, you are welcome to use the following login details:
+To access the plaform, users are welcome to create their own accounts. 
+<br>If you would like to browse using a pre-existing account, you are welcome to use the following login details:
 Email: TEST@TEST.com
 Password: TEST123
 ** Please note: By using JWT/Bcrypt, password information is encrypted before being inputted into the database. I will have no access to any passwords.
