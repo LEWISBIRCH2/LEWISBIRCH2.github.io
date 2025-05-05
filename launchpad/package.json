@@ -2,7 +2,7 @@
   "name": "launchpad",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://lewisbirch2.github,io/launchpad",
+  "homepage": "https://lewisbirch2.github.io/launchpad",
   "dependencies": {
     "@aws-sdk/client-s3": "^3.787.0",
     "@testing-library/dom": "^10.4.0",
@@ -26,6 +26,7 @@
     "react-dom": "^19.0.0",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.17.0",
+    "vercel": "^41.7.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -34,7 +35,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev": "vite",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d public/",
     "predeploy": "npm run build"
   },
   "eslintConfig": {
