@@ -604,23 +604,31 @@ body {
 }
 
 .allArtworkPageContainer {
+  border: cadetblue 2px solid;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  gap: 3rem;
   margin-top: 0.8rem;
 }
 
 .single {
   border: 6px solid #4e3b31;
-  margin: 3rem;
-  padding: 1rem;
+  padding: 0.4rem;
   background-color: #d9cbae;
   border-radius: 6px;
   transition: transform 0.3s ease-in-out;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.artCardImage {
   width: 90%;
-  height: 90%;
+  transform: translate(-10%, 0%);
 }
 
 .single:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }

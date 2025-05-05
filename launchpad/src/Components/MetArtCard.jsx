@@ -9,10 +9,9 @@ export function MetArtCard({ art }) {
         <p>{art.artistDisplayName || "Unknown Artist"}</p>
         <p>{art.objectDate || "No Date Provided"}</p>
         <img
+          className="artCardImage"
           src={art.primaryImageSmall}
           alt={art.title}
-          width="300"
-          style={{ borderRadius: "10px" }}
         />
       </div>
     </Link>

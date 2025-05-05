@@ -8,10 +8,10 @@ export function ChicagoArtCard({ art }) {
         <h2>{art.date_display}</h2>
 
         <img
+        className="artCardImage"
           src={`https://www.artic.edu/iiif/2/${art.image_id}/full/843,/0/default.jpg`}
           alt={art.title}
-          width="300"
-        />
+          />
       </div>
     </Link>
   );
