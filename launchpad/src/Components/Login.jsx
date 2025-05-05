@@ -19,7 +19,7 @@ export function Login() {
     let response = await verifyUser(user);
     if (response) {
       localStorage.setItem("User", response);
-      navigate("/home");
+      navigate("https://lewisbirch2.github.io/Launchpad/home");
     } else {
       alert("Incorrect details submitted");
     }
