@@ -1,4 +1,4 @@
-  
+**Welcome to my Exhibition Curator project**    
 This repository holds my submission for the Launchpad / Tech Returners 'Exhibition Curator' project.  
 This project tasks developers with creating a traversable web app / platform which can be used to view and collate artworks from different museums or universities.   
 
@@ -15,7 +15,7 @@ If you would like to browse using a pre-existing account, you are welcome to use
 Email: TEST@TEST.com  
 Password: TEST123
 
-Please note: By using JWT/Bcrypt, password information is encrypted *before* being inputted into the database. 
+Please note: By using JWT/Bcrypt, password information is securely stored in an encrypted format. 
 
 ---  
 
@@ -47,14 +47,16 @@ The key features of this application include (but aren't limited to):
 ---
 
 **Local Configuration Steps**  
-To run this project locally, follow the steps below in the following order:   
-1.  
-2.  
-3.  
-4.  
-5.  
-6.  
-7.  
+To run this project locally, follow the steps below:     
+1.  Clone this repo by running "git clone https://github.com/LEWISBIRCH2/Launchpad.git"
+2.  Run "cd Launchpad" - to move to the correct folder
+3.  Run "npm i" - to install the required dependencies
+4.  Create a DOTENV file (config.env) in the 'server' folder
+5.  Establish a MongoDB Database named "Museums", and a collection named "Users"
+6.  Populate 'config.env' with the provided ATLAS_URI and SECRETKEY from your selected cluster [May look similar to: ATLAS_URI=mongodb+srv://your_user:your_password@cluster.mongodb.net/your-db]
+7.  Open a terminal and run "cd server" && "node server.js" - to run the server 
+8.  Open a new terminal and run "cd src" && "npm start" - to run the frontend
+9.  Your browser should now be running the application
   
 ---   
   
