@@ -77,7 +77,7 @@ export async function getMetArtworks(page = 1, pageSize = 20) {
   return artworks;
 }
 
-// Returns batches(page) of formatted results (title, image, etc.) 
+// Returns batches(page) of formatted results (title, image, etc.)
 export async function getMetArtworksBatch(start = 0, batchSize = 20) {
   const artworks = [];
   const idsToFetch = allObjectIDs.slice(start, start + batchSize);
@@ -125,7 +125,10 @@ export async function updateUser(id, user) {
 }
 
 export async function verifyUser(user) {
-  const response = await axios.post(`${URL}/users/login`, user);
+  const response = await axios.post(
+    "https://lewisbirch2.github.io/Launchpad/users/login",
+    user
+  );
   if (response.data.success) {
     return response.data.token;
   }
