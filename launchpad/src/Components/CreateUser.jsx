@@ -15,11 +15,11 @@ export function CreateUser() {
   async function handleSubmit(e) {
     e.preventDefault();
     let response = await createUser(user);
-
     if (response.status !== 200) {
       alert("User account could not be created");
     } else {
       alert("Account successfully created!");
+      window.location.reload();
     }
   }
 
