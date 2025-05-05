@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Launchpad/static/css/main.e4559bdc.css",
-    "main.js": "/Launchpad/static/js/main.3ce3fca1.js",
+    "main.js": "/Launchpad/static/js/main.9e29f4c4.js",
     "static/media/vecteezy_classic-marble-statue-of-a-philosopher-on-warm-background_53187725.jpg": "/Launchpad/static/media/vecteezy_classic-marble-statue-of-a-philosopher-on-warm-background_53187725.bf194b325dcc8d39aa5c.jpg",
     "index.html": "/Launchpad/index.html",
     "main.e4559bdc.css.map": "/Launchpad/static/css/main.e4559bdc.css.map",
-    "main.3ce3fca1.js.map": "/Launchpad/static/js/main.3ce3fca1.js.map"
+    "main.9e29f4c4.js.map": "/Launchpad/static/js/main.9e29f4c4.js.map"
   },
   "entrypoints": [
     "static/css/main.e4559bdc.css",
-    "static/js/main.3ce3fca1.js"
+    "static/js/main.9e29f4c4.js"
   ]
 }
