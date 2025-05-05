@@ -3,12 +3,13 @@ To access the plaform, users are welcome to create their own accounts.
 <br>If you would like to browse using a pre-existing account, you are welcome to use the following login details:
 <br>Email: TEST@TEST.com
 Password: TEST123
-<br>** Please note: By using JWT/Bcrypt, password information is encrypted before being inputted into the database. I will have no access to any passwords.
+<br>
+Please note: By using JWT/Bcrypt, password information is encrypted before being inputted into the database. I will have no access to any passwords.
 <br>
 --- 
 <br>
 This repository holds my submission for the Launchpad / Tech Returners 'Exhibition Curator' project.<br>
-This project tasks developers with creating a traversable web app / platform which can be used to view and collate artworks from different museums or universities. 
+This project tasks developers with creating a traversable web app / platform which can be used to view and collate artworks from different museums or universities. <br>
 <br>
 Currently, this application allows users to view art from the following sources:
 <br>The Art Institute of Chicago [https://www.artic.edu/]
