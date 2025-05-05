@@ -31,7 +31,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "vite",
+    "buildvite": "vite build",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "eslintConfig": {
     "extends": [
@@ -52,6 +57,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "react-router-dom": "^7.5.0"
   }
 }
