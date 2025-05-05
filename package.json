@@ -1,5 +1,15 @@
 {
+  "homepage": "https://lewisbirch2.github.io/launchpad",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
   "dependencies": {
     "mongodb": "^6.15.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
