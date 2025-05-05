@@ -14,8 +14,8 @@ export function Layout() {
 
   return (
     <>
-      <Navbar />
-      <Outlet />
+        <Navbar />
+        <Outlet />
     </>
   );
 }

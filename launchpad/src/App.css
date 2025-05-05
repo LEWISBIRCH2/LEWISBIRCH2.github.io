@@ -120,13 +120,6 @@ body {
   border: #4e3b31 6px solid;
   background-color: rgba(217, 203, 174, 0.8);
   border-radius: 2.6rem;
-}
-
-.highlight-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  background-color: rgba(217, 203, 174, 0.8);
   padding: 1rem;
 }
 
@@ -604,7 +597,6 @@ body {
 }
 
 .allArtworkPageContainer {
-  border: cadetblue 2px solid;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 3rem;
@@ -631,4 +623,33 @@ body {
 
 .single:hover {
   transform: scale(1.02);
+}
+
+.spinnerStyle {
+  width: 50px;
+  height: 50px;
+  border: 5px solid black;
+  border-top: 5px solid #d9cbae;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+  display: block;
+  box-sizing: border-box;
+  aspect-ratio: 1 / 1;
+  padding: 0 !important;
+  text-align: left !important;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinnerText {
+  color: #d9cbae;
+  font-size: xx-large;
 }
