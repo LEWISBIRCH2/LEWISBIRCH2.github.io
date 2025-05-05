@@ -2,7 +2,7 @@
   "name": "launchpad",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://lewisbirch2.github.io/launchpad",
+  "homepage": "https://lewisbirch2.github.io/Launchpad",
   "dependencies": {
     "@aws-sdk/client-s3": "^3.787.0",
     "@testing-library/dom": "^10.4.0",

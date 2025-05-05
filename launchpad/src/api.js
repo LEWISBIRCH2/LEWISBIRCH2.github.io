@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "http://localhost:3000";
+const URL = "lewisbirch2.github.io/Launchpad";
 const BASE_URL = "https://collectionapi.metmuseum.org/public/collection/v1";
 let allObjectIDs = [];
 
