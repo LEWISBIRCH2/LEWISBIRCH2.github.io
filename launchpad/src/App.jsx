@@ -5,8 +5,8 @@ import { AboutPage } from "./Pages/AboutPage";
 import { ProfilePage } from "./Pages/ProfilePage";
 import { HomePage } from "./Pages/HomePage";
 import { AllArtwork } from "./Pages/AllArtwork";
-import "./App.css";
 import { Layout } from "./Components/Layout";
+import "./App.css";
 
 
 function App() {
@@ -29,4 +29,4 @@ function App() {
 
 export default App;
 
-// npm start
+

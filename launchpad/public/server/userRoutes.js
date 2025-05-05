@@ -6,21 +6,8 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config({ path: "./config.env" });
 
 let userRoutes = express.Router();
+const SALT_ROUNDS = 6;
 
-const SALT_ROUNDS = 6; // Used for password encryption
-
-// Retrieve All
-userRoutes.route("/Users").get(async (request, response) => {
-  let db = database.getDb();
-  let data = await db.collection("Users").find({}).toArray();
-  if (Object.keys(data).length > 0) {
-    response.json(data);
-  } else {
-    throw new Error("Data not found");
-  }
-});
-
-// Retrieve One
 userRoutes.route("/Users/:id").get(async (request, response) => {
   let db = database.getDb();
   const userId = request.params.id;
@@ -38,10 +25,8 @@ userRoutes.route("/Users/:id").get(async (request, response) => {
   }
 });
 
-// Create
 userRoutes.route("/Users").post(async (request, response) => {
   let db = database.getDb();
-
   const takenEmail = await db
     .collection("Users")
     .findOne({ email: request.body.email });
@@ -63,34 +48,6 @@ userRoutes.route("/Users").post(async (request, response) => {
   }
 });
 
-// Update
-userRoutes.route("/Users/:id").put(async (request, response) => {
-  let db = database.getDb();
-  let mongoObject = {
-    $set: {
-      name: request.body.name,
-      email: request.body.email,
-      password: request.body.password,
-      joinDate: request.body.joinDate,
-      personalExhibit: request.body.personalExhibit,
-    },
-  };
-  let data = await db
-    .collection("Users")
-    .updateOne({ _id: new ObjectId(request.params.id) }, mongoObject);
-  response.json(data);
-});
-
-// // Delete
-// userRoutes.route("/Users/:id").delete(async (request, response) => {
-//   let db = database.getDb();
-//   let data = await db
-//     .collection("Users")
-//     .deleteOne({ _id: new ObjectId(request.params.id) });
-//   response.json(data);
-// });
-
-//     -----     Login     -----
 userRoutes.route("/Users/login").post(async (request, response) => {
   let db = database.getDb();
 
@@ -157,3 +114,22 @@ userRoutes.route("/Users/:id/remove-artwork").post(async (req, res) => {
 });
 
 module.exports = userRoutes;
+
+
+// Allow users to change details?
+// userRoutes.route("/Users/:id").put(async (request, response) => {
+//   let db = database.getDb();
+//   let mongoObject = {
+//     $set: {
+//       name: request.body.name,
+//       email: request.body.email,
+//       password: request.body.password,
+//       joinDate: request.body.joinDate,
+//       personalExhibit: request.body.personalExhibit,
+//     },
+//   };
+//   let data = await db
+//     .collection("Users")
+//     .updateOne({ _id: new ObjectId(request.params.id) }, mongoObject);
+//   response.json(data);
+// });

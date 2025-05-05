@@ -1,7 +1,6 @@
 import { verifyUser } from "../api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 export function Login() {
   const [user, setUser] = useState({

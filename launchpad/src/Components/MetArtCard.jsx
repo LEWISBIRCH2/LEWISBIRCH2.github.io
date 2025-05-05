@@ -6,7 +6,6 @@ export function MetArtCard({ art }) {
     <Link to={`/gallery/${art.objectID}`}>
       <div className="art">
         <h2>{art.title || "Untitled"}</h2>
-        <p>{art.artistDisplayName || "Unknown Artist"}</p>
         <p>{art.objectDate || "No Date Provided"}</p>
         <img
           className="artCardImage"

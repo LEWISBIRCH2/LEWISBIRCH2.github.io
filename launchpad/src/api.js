@@ -36,7 +36,7 @@ export async function getChicagoGallery(id) {
 }
 //     -----     MET     -----
 
-// Calls API for Object ID's
+// Calls API for Object ID's - Grabs full list of ONLY Id's
 export async function initializeMetIDs() {
   try {
     const response = await axios.get(
@@ -49,7 +49,7 @@ export async function initializeMetIDs() {
   }
 }
 
-// Makes specific calls using acquired ID's
+// Makes specific calls using acquired ID's - Runs useable ID's through again
 export async function getMetArtworks(page = 1, pageSize = 20) {
   const startIndex = (page - 1) * pageSize;
   const artworks = [];
@@ -77,7 +77,7 @@ export async function getMetArtworks(page = 1, pageSize = 20) {
   return artworks;
 }
 
-// Returns batches(page) of formatted results (title, image, etc.)
+// Returns batches(page) of formatted results (title, image, etc.) 
 export async function getMetArtworksBatch(start = 0, batchSize = 20) {
   const artworks = [];
   const idsToFetch = allObjectIDs.slice(start, start + batchSize);

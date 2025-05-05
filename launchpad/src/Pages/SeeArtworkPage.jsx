@@ -7,11 +7,9 @@ import { jwtDecode } from "jwt-decode";
 
 export function SeeArtwork() {
   const [artworks, setArtworks] = useState([]);
-  const [museum, setMuseum] = useState("");
   const [isChecked, setIsChecked] = useState(false);
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchArtworks() {
@@ -19,13 +17,11 @@ export function SeeArtwork() {
       try {
         let data = await getChicagoGallery(id);
         setArtworks(data.data);
-        setMuseum("chicago");
       } catch (error) {
         if (error.response?.status === 404 || error.response?.status === 500) {
           try {
             let metData = await getMetGallery(id);
             setArtworks(metData);
-            setMuseum("met");
           } catch (errorMet) {}
         }
       }
@@ -46,10 +42,7 @@ export function SeeArtwork() {
         {
           artwork: artworks,
         }
-        // {
-        //   headers: {
-        //     Authorization: `Bearer ${token}`,
-        //   },
+  
       );
       alert("Artwork added to your personal exhibit!");
     } catch (err) {

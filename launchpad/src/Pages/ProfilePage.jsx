@@ -14,9 +14,7 @@ export function ProfilePage() {
 
       const res = await axios.get(
         `http://localhost:3000/Users/${decodedUser._id}`
-        // {
-        //   headers: { Authorization: `Bearer ${token}` },
-        // }
+   
       );
       setExhibit(res.data.personalExhibit || []);
     }
@@ -24,16 +22,10 @@ export function ProfilePage() {
   }, []);
 
   async function handleRemoveArtwork(artworkId) {
-    const token = localStorage.getItem("User"); // Would I need this? If removing all headers
     try {
       await axios.post(
         `http://localhost:3000/Users/${user._id}/remove-artwork`,
         { artworkId }
-        // {
-        //   headers: {
-        //     Authorization: `Bearer ${token}`,
-        //   },
-        // }
       );
       alert("Successfully removed artwork!");
 
