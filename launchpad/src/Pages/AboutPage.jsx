@@ -15,8 +15,9 @@ export function AboutPage() {
           </p>
           <p>
             {" "}
-            This project was completed as part of the Launchpad program, which
-            allows trainee developers to demonstrate their abilities
+            This project was completed as part of the Launchpad / Tech Returners
+            program, which allows trainee developers to demonstrate their
+            abilities in web app creation
           </p>
         </div>
       </div>
