@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/launchpad/static/css/main.a7aa7e0a.css",
+    "main.js": "/launchpad/static/js/main.28f72a55.js",
+    "static/media/vecteezy_classic-marble-statue-of-a-philosopher-on-warm-background_53187725.jpg": "/launchpad/static/media/vecteezy_classic-marble-statue-of-a-philosopher-on-warm-background_53187725.bf194b325dcc8d39aa5c.jpg",
+    "index.html": "/launchpad/index.html",
+    "main.a7aa7e0a.css.map": "/launchpad/static/css/main.a7aa7e0a.css.map",
+    "main.28f72a55.js.map": "/launchpad/static/js/main.28f72a55.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a7aa7e0a.css",
+    "static/js/main.28f72a55.js"
+  ]
+}
