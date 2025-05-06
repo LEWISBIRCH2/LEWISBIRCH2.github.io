@@ -5,7 +5,7 @@ const users = require("./userRoutes");
 const multer = require("multer");
 const upload = multer();
 const application = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 application.use(
   cors({
@@ -21,5 +21,5 @@ application.use(users);
 
 application.listen(PORT, () => {
   connect.connectToServer();
-  // console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
