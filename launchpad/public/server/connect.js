@@ -9,6 +9,7 @@ let database;
 module.exports = {
   connectToServer: () => {
     database = client.db("Museums");
+    console.log("Connected to MUSEUMS");
   },
   getDb: () => {
     return database;
