@@ -23,7 +23,13 @@ application.get("/", (req, res) => {
   res.send("Launchpad backend is running!");
 });
 
-application.listen(PORT, () => {
-  connect.connectToServer();
-  console.log(`Server is running on port ${PORT}`);
+connect.connectToServer((err) => {
+  if (err) {
+    console.error("Failed to connect to MongoDB");
+    process.exit(1);
+  }
+
+  application.listen(PORT, () => {
+    console.log(`✅ Server is running on port ${PORT}`);
+  });
 });
