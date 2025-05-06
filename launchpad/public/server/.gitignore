@@ -1,1 +1,4 @@
-node_nodules
+.node_modules
+node_modules
+*node_modules
+.launchpad/public/server/node_modules
