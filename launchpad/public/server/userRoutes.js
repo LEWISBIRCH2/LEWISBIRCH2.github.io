@@ -8,7 +8,7 @@ require("dotenv").config({ path: "./config.env" });
 let userRoutes = express.Router();
 const SALT_ROUNDS = 6;
 
-userRoutes.route("/Users/:id").get(async (request, response) => {
+userRoutes.route("/users/:id").get(async (request, response) => {
   let db = database.getDb();
   const userId = request.params.id;
   if (!ObjectId.isValid(userId)) {
@@ -25,7 +25,7 @@ userRoutes.route("/Users/:id").get(async (request, response) => {
   }
 });
 
-userRoutes.route("/Users").post(async (request, response) => {
+userRoutes.route("/users").post(async (request, response) => {
   let db = database.getDb();
   const takenEmail = await db
     .collection("Users")
@@ -48,7 +48,7 @@ userRoutes.route("/Users").post(async (request, response) => {
   }
 });
 
-userRoutes.route("/Users/login").post(async (request, response) => {
+userRoutes.route("/users/login").post(async (request, response) => {
   let db = database.getDb();
 
   const user = await db
@@ -71,7 +71,7 @@ userRoutes.route("/Users/login").post(async (request, response) => {
   }
 });
 
-userRoutes.route("/Users/:id/add-artwork").post(async (req, res) => {
+userRoutes.route("/users/:id/add-artwork").post(async (req, res) => {
   const db = database.getDb();
   const userId = req.params.id;
   const artwork = req.body.artwork;
@@ -91,7 +91,7 @@ userRoutes.route("/Users/:id/add-artwork").post(async (req, res) => {
   }
 });
 
-userRoutes.route("/Users/:id/remove-artwork").post(async (req, res) => {
+userRoutes.route("/users/:id/remove-artwork").post(async (req, res) => {
   const db = database.getDb();
   const userId = req.params.id;
   const artworkId = req.body.artworkId;
