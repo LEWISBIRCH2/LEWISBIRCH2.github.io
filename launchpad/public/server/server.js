@@ -19,6 +19,10 @@ application.use(express.json());
 application.use(upload.any());
 application.use(users);
 
+application.get("/", (req, res) => {
+  res.send("Launchpad backend is running!");
+});
+
 application.listen(PORT, () => {
   connect.connectToServer();
   console.log(`Server is running on port ${PORT}`);
