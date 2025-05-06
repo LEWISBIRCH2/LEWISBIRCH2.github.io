@@ -68,3 +68,4 @@ To run this project locally, follow the steps below:
 - 'ArtCard' inconsistency; The structure of ArtCard is fine, but is repeated for each institution. This can be refactored into a single component
 - Additional institutions are to be added in the future to allow for a more full viewing experience
 - Addiitonal filter/sort options to help users better locate what they are looking for
+- Additional personal exhibits are to be added to allow users to select where they'd like their saved artwork to go
