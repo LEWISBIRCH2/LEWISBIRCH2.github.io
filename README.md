@@ -54,9 +54,10 @@ To run this project locally, follow the steps below:
 4.  Create a DOTENV file (config.env) in the 'server' folder
 5.  Establish a MongoDB Database named "Museums", and a collection named "Users"
 6.  Populate 'config.env' with the provided ATLAS_URI and SECRETKEY from your selected cluster [May look similar to: ATLAS_URI=mongodb+srv://your_user:your_password@cluster.mongodb.net/your-db]
-7.  Open a terminal and run "cd server" && "node server.js" - to run the server 
-8.  Open a new terminal and run "cd src" && "npm start" - to run the frontend
-9.  Your browser should now be running the application
+7.  Change any appropraiate URL (Onrender / Github.io) to Localhost on selected port
+8.  Open a terminal and run "cd server" && "node server.js" - to run the server 
+9.  Open a new terminal and run "cd src" && "npm start" - to run the frontend
+10.  Your browser should now be running the application 
   
 ---   
   
