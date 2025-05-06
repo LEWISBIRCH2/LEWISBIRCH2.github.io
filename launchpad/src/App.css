@@ -163,6 +163,15 @@ body {
   text-align: left;
 }
 
+@media (max-width: 1400px) {
+  .about {
+    width: 90%;
+    padding: 2rem;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+}
+
 .landingIntro {
   text-align: left;
   font-size: 2rem;
