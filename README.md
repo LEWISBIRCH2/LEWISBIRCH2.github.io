@@ -23,7 +23,8 @@ Please note: By using JWT/Bcrypt, password information is securely stored in an 
 This project was developed using a MERN stack, which consists of MongoDB, Express, React, and Node.js.  
 The key features of this application include (but aren't limited to):
 - The ability for users to create and login to their own accounts, with encryption security measures built in
-- Swift API calls being returned in a custom, user-legible format, whilst making use of paginatation to minimise server stress 
+- Swift API calls being returned in a custom, user-legible format, whilst making use of paginatation to minimise server stress
+- A fully deployed backend (using Render) to provide users with permanent website uptime
 - Thematic styling and WCAG friendly layouts, resulting in a consistently high Lighthouse Accessibility score
 - Coherent naming conventions which help users using assistive technology to navigate all pages 
 
@@ -54,10 +55,10 @@ To run this project locally, follow the steps below:
 4.  Create a DOTENV file (config.env) in the 'server' folder
 5.  Establish a MongoDB Database named "Museums", and a collection named "Users"
 6.  Populate 'config.env' with the provided ATLAS_URI and SECRETKEY from your selected cluster [May look similar to: ATLAS_URI=mongodb+srv://your_user:your_password@cluster.mongodb.net/your-db]
-7.  Change any appropraiate URL (Onrender / Github.io) to Localhost on selected port
+7.  Change any hard-coded URL (Onrender/Github.io...) to Localhost on selected port
 8.  Open a terminal and run "cd server" && "node server.js" - to run the server 
 9.  Open a new terminal and run "cd src" && "npm start" - to run the frontend
-10.  Your browser should now be running the application 
+10.  Your browser should now be running the application locally
   
 ---   
   
