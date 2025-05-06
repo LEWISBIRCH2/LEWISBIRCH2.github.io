@@ -133,6 +133,12 @@ body {
   border-radius: 2.6rem;
   padding: 1rem;
 }
+@media (max-width: 1700px) {
+  .highlight-grid {
+    border: 0px solid rgba(0, 0, 0, 0);
+    background-color: #c0b2a100;
+  }
+}
 
 .highlight-grid > * {
   border: 6px solid #4e3b31;
