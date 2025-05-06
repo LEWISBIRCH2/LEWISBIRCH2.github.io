@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 
 application.use(
   cors({
-    origin: "https://LEWISBIRCH2.github.io",
+    origin: "https://lewisbirch2.github.io",
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
     allowedHeaders: ["Content-Type"],
@@ -18,6 +18,10 @@ application.use(
 application.use(express.json());
 application.use(upload.any());
 application.use(users);
+
+application.get("/", (req, res) => {
+  res.send("Launchpad backend is running!");
+});
 
 application.listen(PORT, () => {
   connect.connectToServer();
