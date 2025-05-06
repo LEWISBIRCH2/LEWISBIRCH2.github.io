@@ -9,9 +9,9 @@ const PORT = 3000;
 
 application.use(
   cors({
-    origin: "*",
+    origin: "'https://LEWISBIRCH2.github.io'",
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    credentials: false,
+    credentials: true,
     allowedHeaders: ["Content-Type"],
   })
 );
