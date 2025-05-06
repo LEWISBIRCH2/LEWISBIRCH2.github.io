@@ -38,7 +38,7 @@ export function SeeArtwork() {
 
     try {
       await axios.post(
-        `http://localhost:3000/Users/${userId}/add-artwork`,
+        `https://launchpad-twh3.onrender.com/Users/${userId}/add-artwork`,
         {
           artwork: artworks,
         }

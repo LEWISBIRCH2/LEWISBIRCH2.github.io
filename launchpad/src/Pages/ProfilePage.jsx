@@ -13,7 +13,7 @@ export function ProfilePage() {
       setUser(decodedUser);
 
       const res = await axios.get(
-        `http://localhost:3000/Users/${decodedUser._id}`
+        `https://launchpad-twh3.onrender.com/Users/${decodedUser._id}`
    
       );
       setExhibit(res.data.personalExhibit || []);
@@ -24,7 +24,7 @@ export function ProfilePage() {
   async function handleRemoveArtwork(artworkId) {
     try {
       await axios.post(
-        `http://localhost:3000/Users/${user._id}/remove-artwork`,
+        `https://launchpad-twh3.onrender.com/Users/${user._id}/remove-artwork`,
         { artworkId }
       );
       alert("Successfully removed artwork!");
